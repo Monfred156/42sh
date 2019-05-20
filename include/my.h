@@ -23,5 +23,6 @@ char *my_realloc(char *string, int nb);
 char *add_chars_to_str(char *str, char *characteres);
 int array_len(char **array);
 int my_put_nbr(int nb);
+char **my_str_to_word_array(char *str);
 
 #endif

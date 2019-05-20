@@ -13,12 +13,14 @@ SRC	=	my_putstr.c			\
 		add_chars_to_str.c	\
 		array_len.c         \
 		my_put_nbr.c        \
+		my_str_to_word_array.c
 
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	libmy.a
 
 CFLAGS  =   -I ../../include
+CFLAGS += -W -Wall -Wextra -Wno-unused -g
 
 all:	$(NAME)
 

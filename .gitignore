@@ -1,3 +1,5 @@
+CMakeLists.txt
+cmake-build-debug
 a.out
 lib/my/*.o
 lib/my/*.a

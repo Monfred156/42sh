@@ -87,7 +87,7 @@ char *space_in_str(char *str)
     copy[0] = '\0';
     for (int nb = 0; str[nb] != '\0'; nb++)
         copy = str_and_or(copy, str, &nb);
-    //free(str);
+    free(str);
     copy = del_to_much_space(copy);
     return (copy);
 }

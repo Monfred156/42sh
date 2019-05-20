@@ -20,7 +20,7 @@ int main_42sh(void)
         if (getline(&string, &len, stdin) == -1) {
             return 84;
         }
-        string = space_in_str(string);
+        string = str_clean(string);
         string = remove_n(string);
         array = parse_string(string);
         for (int i = 0; array[i]; i++)

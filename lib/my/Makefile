@@ -11,6 +11,8 @@ SRC	=	my_putstr.c			\
 		my_strcmp.c			\
 		my_realloc.c		\
 		add_chars_to_str.c	\
+		array_len.c         \
+		my_put_nbr.c        \
 
 OBJ	=	$(SRC:.c=.o)
 

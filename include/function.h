@@ -10,6 +10,7 @@
 
 ///history.c///
 char **get_history(char **history, char *str);
+void print_history(char **history);
 
 ///space_in_str///
 char *space_in_str(char *str);

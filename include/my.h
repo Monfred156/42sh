@@ -21,5 +21,7 @@ char *get_next_line(int fd);
 char *my_strdup(char *str);
 char *my_realloc(char *string, int nb);
 char *add_chars_to_str(char *str, char *characteres);
+int array_len(char **array);
+int my_put_nbr(int nb);
 
 #endif

@@ -8,11 +8,7 @@
 #include "my.h"
 #include "function.h"
 
-inain(void)
+int main(void)
 {
-    rn (main_42sh());
-    gdgdsgd
-gfdgsfdgs
-    gdsfg//test
-}gfd
-__GNUC_STDC_INLINE__ggfdsgds
+    return (main_42sh());
+}

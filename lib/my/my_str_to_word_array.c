@@ -49,13 +49,13 @@ void malloc_str(char **result, char *map, char *character)
     for (save = 0; map[save] != 0; save++) {
         for (nb++; map[save] != 0 &&
         search_in_character(map, character, save) == 0; save++);
-        result[nb] = malloc(sizeof(char) * (save - sub + 1));
+        result[nb] = check_malloc_char(save - sub + 1);
         sub = save + 1;
         if (map[save] == 0)
             save--;
     }
     if (save == 0)
-        result[0] = malloc(sizeof(char));
+        result[0] = check_malloc_char(1);
 }
 
 char **my_to_word_array(char *map, char *character)
@@ -66,7 +66,7 @@ char **my_to_word_array(char *map, char *character)
     for (int nb = 0; map[nb] != 0; nb++)
         if (search_in_character(map, character, nb) == 1)
             count++;
-    result = malloc(sizeof(char *) * (count + 1));
+    result = check_malloc_char_star(count + 1);
     result[count] = NULL;
     malloc_str(result, map, character);
     fill_str(result, map, character);

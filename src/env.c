@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** env.c
+** env
 ** File description:
-** ncauet
+** .c
 */
 
 #include <unistd.h>
@@ -15,15 +15,6 @@ void free_env(char **env)
     for (int i = 0; env[i] != NULL; i++)
         free(env[i]);
     free(env);
-}
-
-int env_size(char **env)
-{
-    int count = 0;
-
-    while (env[count] != NULL)
-        count++;
-    return (count);
 }
 
 int set_env(char **env, data_t *data)

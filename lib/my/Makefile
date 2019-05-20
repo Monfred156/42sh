@@ -16,6 +16,8 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	libmy.a
 
+CFLAGS  =   -I ../../include
+
 all:	$(NAME)
 
 $(NAME):	$(OBJ)

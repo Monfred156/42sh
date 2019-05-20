@@ -5,15 +5,9 @@
 ** my_strlen
 */
 
-#include "../../include/my.h"
-
 int my_strlen(char const *str)
 {
-    int i;
-    int counter;
-    counter = 0;
-    for (i = 0; str[i]; i++) {
-        counter++;
-    }
+    int counter = 0;
+    for (; str[counter]; counter++);
     return (counter);
 }

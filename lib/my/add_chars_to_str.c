@@ -5,7 +5,7 @@
 ** add_chars_to_str.c
 */
 
-#include "../../include/my.h"
+#include "my.h"
 
 char *add_chars_to_str(char *str, char *characteres)
 {

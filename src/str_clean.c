@@ -78,7 +78,7 @@ char *str_and_or(char *copy, char *str, int *nb)
     return (copy);
 }
 
-char *space_in_str(char *str)
+char *str_clean(char *str)
 {
     char *copy = malloc(sizeof(char));
 

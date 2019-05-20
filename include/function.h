@@ -25,7 +25,7 @@ char **get_history(char **history, char *str);
 void print_history(char **history);
 
 ///space_in_str///
-char *space_in_str(char *str);
+char *str_clean(char *str);
 
 ///42sh.c///
 int main_42sh(void);

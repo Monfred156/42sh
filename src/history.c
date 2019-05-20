@@ -14,6 +14,7 @@ char **add_one_line_end_of_array(char **array, char *str)
 {
     int i = 0;
     char **array_dup = malloc(sizeof(char *) * (array_len(array) + 2));
+
     for (; array[i]; i++)
         array_dup[i] = array[i];
     array_dup[i] = str;
@@ -26,6 +27,7 @@ void print_history(char **history)
 {
     int counter = 0;
     int counter_max = 0;
+
     for (int nb_max = array_len(history) - 1; nb_max > 0; nb_max /= 10)
         counter_max++;
     for (int i = 0; history[i]; i++) {

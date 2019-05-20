@@ -1,24 +1,24 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_strcmp
+** my_strcmp.c
 ** File description:
-** my_strcmp
+** compare 2 char *
 */
 
-#include "my.h"
+#include <stddef.h>
 
 int my_strcmp(char const *s1, char const *s2)
 {
-    int counter = 0;
-    int counter_s1 = my_strlen(s1);
+    int nb;
 
-    if (my_strlen(s1) == my_strlen(s2)) {
-        for (int i = 0; s1[i]; i++) {
-            if (s1[i] == s2[i])
-                counter++;
-        }
-        if (counter == counter_s1)
-            return (0);
-    }
-    return (1);
+    if (s1 == NULL || s2 == NULL)
+        return (84);
+    for (nb = 0; s1[nb] != 0 && s2[nb] != 0; nb++)
+        if (s1[nb] != s2[nb])
+            return (84);
+    if (s1[nb] != 0)
+        return (1);
+    if (s2[nb] != 0)
+        return (-1);
+    return (0);
 }

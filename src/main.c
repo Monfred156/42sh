@@ -5,10 +5,9 @@
 ** .c
 */
 
-#include "my.h"
 #include "function.h"
 
-int main(void)
+int main(int ac, char **av, char **env)
 {
-    return (main_42sh());
+    return (main_42sh(env));
 }

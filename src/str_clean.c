@@ -10,7 +10,7 @@
 
 char *del_to_much_space(char *str)
 {
-    char *copy = malloc(sizeof(char));
+    char *copy = check_malloc_char(1);
     int count = 1;
 
     if (copy == NULL)
@@ -80,7 +80,7 @@ char *str_and_or(char *copy, char *str, int *nb)
 
 char *str_clean(char *str)
 {
-    char *copy = malloc(sizeof(char));
+    char *copy = check_malloc_char(1);
 
     for (int nb = 0; str[nb] != '\0'; nb++)
         if (str[nb] == '\t')

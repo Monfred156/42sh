@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <struct.h>
 #include <string.h>
+#include "function.h"
 
 void free_env(char **env)
 {
@@ -17,16 +18,14 @@ void free_env(char **env)
     free(env);
 }
 
-int set_env(char **env, data_t *data)
+void get_env(char **env, data_t *data)
 {
     int x = 0;
     int y = 0;
-    if (!(data->cpy_env = malloc(sizeof(char *) * (env_size(env) + 1))))
-        return 1;
+    data->cpy_env = check_malloc_char_star(array_len(env) + 1);
 
     while (env[x] != NULL) {
-        if (!(data->cpy_env[x] = malloc(sizeof(char) * strlen(env[x]) + 1)))
-            return (1);
+        data->cpy_env[x] = check_malloc_char(my_strlen(env[x]) + 1);
         while (env[x][y] != '\0' && env[x][y] != '\n') {
             data->cpy_env[x][y] = env[x][y];
             y++;
@@ -36,5 +35,4 @@ int set_env(char **env, data_t *data)
         x++;
     }
     data->cpy_env[x] = NULL;
-    return (0);
 }

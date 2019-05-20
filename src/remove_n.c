@@ -5,7 +5,6 @@
 ** space_in_str.c
 */
 
-#include "my.h"
 #include "function.h"
 
 char *remove_n(char *string)

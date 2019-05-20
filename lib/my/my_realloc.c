@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "my.h"
 
 char *my_realloc(char *string, int nb)
 {
@@ -13,7 +14,7 @@ char *my_realloc(char *string, int nb)
     int count;
 
     for (count = 0; string[count] != 0; count++);
-    copy = malloc(sizeof(char) * (count + nb + 1));
+    copy = check_malloc_char(count + nb + 1);
     if (copy == NULL)
         exit (84);
     for (count = 0; string[count] != 0; count++)

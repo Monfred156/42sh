@@ -22,7 +22,7 @@ char *del_to_much_space(char *str)
         else
             count = 0;
         if (count <= 1) {
-            copy = my_realloc(copy, 2);
+            copy = my_realloc(copy, 1);
             copy[my_strlen(copy)] = str[nb];
         }
     }
@@ -82,8 +82,13 @@ char *space_in_str(char *str)
 {
     char *copy = malloc(sizeof(char));
 
-    if (copy == NULL || my_strlen(str) == 0)
+    for (int nb = 0; str[nb] != '\0'; nb++)
+        if (str[nb] == '\t')
+            str[nb] = ' ';
+    if (my_strlen(str) == 0)
         return (NULL);
+    if (copy == NULL)
+        exit (84);
     copy[0] = '\0';
     for (int nb = 0; str[nb] != '\0'; nb++)
         copy = str_and_or(copy, str, &nb);

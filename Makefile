@@ -14,6 +14,7 @@ RM	= rm -f
 SRCS	=		./src/main.c		\
                 ./src/history.c     \
     			./src/space_in_str.c	\
+    			./src/42sh.c            \
 
 OBJS	=	$(SRCS:.c=.o)
 

@@ -5,12 +5,10 @@
 ** .c
 */
 
-#include <stddef.h>
-#include <stdlib.h>
 #include "my.h"
 #include "function.h"
 
 int main(void)
 {
-    return (0);
+    return (main_42sh());
 }

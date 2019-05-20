@@ -30,4 +30,10 @@ char *space_in_str(char *str);
 ///42sh.c///
 int main_42sh(void);
 
+///parse_string.c///
+char **parse_string(char *string);
+
+///remove_n.c///
+char *remove_n(char *string);
+
 #endif //PSU_42SH_2018_FUNCTION_H

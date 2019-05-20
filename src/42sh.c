@@ -21,8 +21,9 @@ int main_42sh(void)
             return 84;
         }
         string = space_in_str(string);
-        array = my_str_to_word_array(string);
+        string = remove_n(string);
+        array = parse_string(string);
         for (int i = 0; array[i]; i++)
-            printf("%s\n", array[i]);
+           printf("%s\n", array[i]);
     }
 }

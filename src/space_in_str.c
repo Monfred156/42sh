@@ -22,7 +22,7 @@ char *del_to_much_space(char *str)
         else
             count = 0;
         if (count <= 1) {
-            copy = my_realloc(copy, 2);
+            copy = my_realloc(copy, 1);
             copy[my_strlen(copy)] = str[nb];
         }
     }

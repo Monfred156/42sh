@@ -14,6 +14,8 @@ char *my_realloc(char *string, int nb)
 
     for (count = 0; string[count] != 0; count++);
     copy = malloc(sizeof(char) * (count + nb + 1));
+    if (copy == NULL)
+        exit (84);
     for (count = 0; string[count] != 0; count++)
         copy[count] = string[count];
     for (int i = count; i < nb + count + 1; i++)

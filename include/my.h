@@ -10,7 +10,7 @@
 #define MY_H_
 
 void my_putchar(char c);
-int my_putstr(char const *str);
+void my_putstr(char const *str);
 int my_strlen(char const *str);
 int my_getnbr(char const *str);
 char *int_to_str(int nb);
@@ -22,7 +22,11 @@ char *my_strdup(char *str);
 char *my_realloc(char *string, int nb);
 char *add_chars_to_str(char *str, char *characteres);
 int array_len(char **array);
-int my_put_nbr(int nb);
-char **my_str_to_word_array(char *str);
+void my_put_nbr(int nb);
+char *check_malloc_char(int size);
+char **check_malloc_char_star(int size);
+int *check_malloc_int(int size);
+void my_put_nbr(int nb);
+char **my_str_to_word_array(char *map, char *character);
 
 #endif

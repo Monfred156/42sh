@@ -78,12 +78,17 @@ char *str_and_or(char *copy, char *str, int *nb)
     return (copy);
 }
 
-char *space_in_str(char *str)
+char *str_clean(char *str)
 {
     char *copy = malloc(sizeof(char));
 
-    if (copy == NULL || my_strlen(str) == 0)
+    for (int nb = 0; str[nb] != '\0'; nb++)
+        if (str[nb] == '\t')
+            str[nb] = ' ';
+    if (my_strlen(str) == 0)
         return (NULL);
+    if (copy == NULL)
+        exit (84);
     copy[0] = '\0';
     for (int nb = 0; str[nb] != '\0'; nb++)
         copy = str_and_or(copy, str, &nb);

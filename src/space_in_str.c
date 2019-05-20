@@ -8,12 +8,28 @@
 #include <stdlib.h>
 #include "my.h"
 
-char *add_chars_to_str(char *str, char *characteres)
+char *del_to_much_space(char *str)
 {
-    str = my_realloc(str, my_strlen(characteres));
-    for (int nb = 0; characteres[nb] != '\0'; nb++)
-        str[my_strlen(str)] = characteres[nb];
-    return (str);
+    char *copy = malloc(sizeof(char));
+    int count = 1;
+
+    if (copy == NULL)
+        return (NULL);
+    copy[0] = '\0';
+    for (int nb = 0; str[nb] != '\0'; nb++) {
+        if (str[nb] == ' ')
+            count++;
+        else
+            count = 0;
+        if (count <= 1) {
+            copy = my_realloc(copy, 1);
+            copy[my_strlen(copy)] = str[nb];
+        }
+    }
+    free(str);
+    if (copy[my_strlen(copy) - 1] == ' ')
+        copy[my_strlen(copy) - 1] = '\0';
+    return (copy);
 }
 
 char *str_simple_char(char *copy, char *str, int *nb)
@@ -64,13 +80,14 @@ char *str_and_or(char *copy, char *str, int *nb)
 
 char *space_in_str(char *str)
 {
-    char *copy = malloc(sizeof(char) * 1);
+    char *copy = malloc(sizeof(char));
 
     if (copy == NULL || my_strlen(str) == 0)
         return (NULL);
     copy[0] = '\0';
     for (int nb = 0; str[nb] != '\0'; nb++)
         copy = str_and_or(copy, str, &nb);
-    free(str);
+    //free(str);
+    copy = del_to_much_space(copy);
     return (copy);
 }

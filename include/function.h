@@ -8,6 +8,8 @@
 #ifndef PSU_42SH_2018_FUNCTION_H
 #define PSU_42SH_2018_FUNCTION_H
 
+#include "my.h"
+#include "struct.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
@@ -28,7 +30,10 @@ void print_history(char **history);
 char *str_clean(char *str);
 
 ///42sh.c///
-int main_42sh(void);
+int main_42sh(char **env);
+
+///env.c///
+void get_env(char **env, data_t *data);
 
 ///parse_string.c///
 char **parse_string(char *string);

@@ -5,15 +5,16 @@
 ** space_in_str.c
 */
 
-#include "my.h"
 #include "function.h"
 
-int main_42sh(void)
+int main_42sh(char **env)
 {
     char *string = NULL;
     size_t len = 0;
     char **array;
+    data_t *data = NULL;
 
+    get_env(env, data);
     while (1) {
         if (isatty(0))
             my_putstr("42sh> ");

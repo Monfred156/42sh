@@ -5,7 +5,6 @@
 ** space_in_str.c
 */
 
-#include "my.h"
 #include "function.h"
 
 int malloc_nbr_string(char *string)

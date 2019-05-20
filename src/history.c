@@ -7,7 +7,6 @@
 
 #include <stddef.h>
 #include <stdlib.h>
-#include "my.h"
 #include "function.h"
 
 char **add_one_line_end_of_array(char **array, char *str)

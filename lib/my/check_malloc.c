@@ -12,7 +12,7 @@ char *check_malloc_char(int size)
     char *str = malloc(sizeof(char) * size);
 
     if (str == NULL)
-        exit (84);
+        exit(84);
     return (str);
 }
 

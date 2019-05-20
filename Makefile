@@ -17,6 +17,7 @@ SRCS	=		./src/main.c		\
     			./src/parse_string.c    \
     			./src/str_clean.c	\
     			./src/remove_n.c        \
+    			./src/env.c             \
 
 OBJS	=	$(SRCS:.c=.o)
 

@@ -19,5 +19,6 @@ char *my_int_to_str(int nb);
 int my_strcmp(char const *s1, char const *s2);
 char *get_next_line(int fd);
 char *my_strdup(char *str);
+char *my_realloc(char *string, int nb);
 
 #endif

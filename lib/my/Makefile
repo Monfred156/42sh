@@ -5,10 +5,11 @@
 ## task01 CPool_Day10_2018
 ##
 
-SRC	=	my_putstr.c \
-		my_putchar.c \
-		my_strlen.c	\
-		my_strcmp.c	\
+SRC	=	my_putstr.c		\
+		my_putchar.c	\
+		my_strlen.c		\
+		my_strcmp.c		\
+		my_realloc.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

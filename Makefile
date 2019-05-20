@@ -11,7 +11,8 @@ CC	= gcc
 
 RM	= rm -f
 
-SRCS	=		./src/main.c		\
+SRCS	=	./src/main.c			\
+			./src/space_in_str.c	\
 
 OBJS	=	$(SRCS:.c=.o)
 

@@ -18,6 +18,7 @@ char **add_one_line_end_of_array(char **array, char *str)
         array_dup[i] = array[i];
     array_dup[i] = str;
     array_dup[i + 1] = NULL;
+    free(array);
     return (array_dup);
 }
 
@@ -25,7 +26,7 @@ void print_history(char **history)
 {
     int counter = 0;
     int counter_max = 0;
-    for (int nb_max = array_len(history); nb_max > 0; nb_max /= 10)
+    for (int nb_max = array_len(history) - 1; nb_max > 0; nb_max /= 10)
         counter_max++;
     for (int i = 0; history[i]; i++) {
         counter = 0;
@@ -35,6 +36,7 @@ void print_history(char **history)
             counter++;
         for (; counter < counter_max; counter++)
             my_putchar(' ');
+        my_putchar(' ');
         my_put_nbr(i);
         my_putstr("  ");
         my_putstr(history[i]);

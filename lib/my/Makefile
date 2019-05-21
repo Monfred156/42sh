@@ -20,6 +20,7 @@ SRC	=	my_putstr.c				\
 		add_chars_before_str.c	\
 		my_free.c				\
 		my_str_count.c			\
+		my_strncmp.c            \
 
 OBJ	=	$(SRC:.c=.o)
 

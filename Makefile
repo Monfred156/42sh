@@ -19,6 +19,7 @@ SRCS	=		./src/main.c			\
     			./src/remove_n.c		\
     			./src/env.c				\
 				./src/shell_excve.c		\
+				./src/exit.c
 
 OBJS	=	$(SRCS:.c=.o)
 

@@ -45,4 +45,8 @@ char *remove_n(char *string);
 ///shell_excve.c///
 void excve_function(char **argv, char **env);
 
+///exit.c///
+int check_exit_command_exist(char **commands);
+int check_exit_value(char **commands);
+
 #endif //PSU_42SH_2018_FUNCTION_H

@@ -33,5 +33,6 @@ char *add_chars_before_str(char *str, char *add);
 char *add_chars_after_str(char *str, char *add);
 void my_free(char **str);
 int my_str_count(char *str, char *chr);
+int my_strncmp(char const *, char const *, int);
 
 #endif

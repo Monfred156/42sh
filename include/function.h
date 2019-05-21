@@ -43,7 +43,10 @@ char **parse_string(char *string);
 char *remove_n(char *string);
 
 ///shell_excve.c///
-void excve_function(char **argv, char **env);
+int excve_function(char **argv, char **env);
+
+///search_function.c///
+int search_builtin_function(char *str, char **env);
 
 ///file_array_pars.c///
 int fill_array_after_separa(const char *string, char **array, int *rank, int i);

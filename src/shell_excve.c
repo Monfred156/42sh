@@ -56,7 +56,7 @@ void excve_function(char *str, char **argv, char **env)
             exit (84);
         execve(copy, argv, env);
     } else {
-        my_put_error(str);
-        my_put_error(": Command not found.\n");
+        my_putstr_error(str);
+        my_putstr_error(": Command not found.\n");
     }
 }

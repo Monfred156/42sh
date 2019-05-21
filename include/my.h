@@ -11,6 +11,7 @@
 
 void my_putchar(char c);
 void my_putstr(char const *str);
+void my_putstr_error(char const *str);
 int my_strlen(char const *str);
 int my_getnbr(char const *str);
 char *int_to_str(int nb);

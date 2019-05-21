@@ -22,6 +22,8 @@ SRCS	=		./src/main.c			\
 				./src/fill_array_pars.c \
 				./src/exit.c            \
 				./src/error_handling.c  \
+				./src/exit.c
+				./src/search_function.c	\
 
 OBJS	=	$(SRCS:.c=.o)
 

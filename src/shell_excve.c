@@ -62,7 +62,7 @@ char *access_path(char *str, char **env)
     return (copy);
 }
 
-void excve_function(char **argv, char **env)
+int excve_function(char **argv, char **env)
 {
     char *copy = access_path(argv[0], env);
     int pid;
@@ -73,7 +73,7 @@ void excve_function(char **argv, char **env)
         if (pid < 0)
             exit (84);
         if (pid == 0)
-            execve(copy, argv, env);
+            return (execve(copy, argv, env));
         else {
             waitpid(pid, &error, 0);
             crash_file(error);
@@ -82,4 +82,5 @@ void excve_function(char **argv, char **env)
         my_putstr_error(argv[0]);
         my_putstr_error(": Command not found.\n");
     }
+    return (1);
 }

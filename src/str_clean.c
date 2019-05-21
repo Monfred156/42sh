@@ -36,16 +36,16 @@ char *str_simple_char(char *copy, char *str, int *nb)
 {
     switch (str[*nb]) {
         case ';':
-            copy = add_chars_to_str(copy, " ; ");
+            copy = add_chars_after_str(copy, " ; ");
             break;
         case '|':
-            copy = add_chars_to_str(copy, " | ");
+            copy = add_chars_after_str(copy, " | ");
             break;
         case '>':
-            copy = add_chars_to_str(copy, " > ");
+            copy = add_chars_after_str(copy, " > ");
             break;
         case '<':
-            copy = add_chars_to_str(copy, " < ");
+            copy = add_chars_after_str(copy, " < ");
             break;
         default:
             copy = my_realloc(copy, 1);
@@ -57,10 +57,10 @@ char *str_simple_char(char *copy, char *str, int *nb)
 char *str_direction(char *copy, char *str, int *nb)
 {
     if (str[*nb] == '>' && str[*nb + 1] == '>') {
-        copy = add_chars_to_str(copy, " >> ");
+        copy = add_chars_after_str(copy, " >> ");
         *nb += 1;
     } else if (str[*nb] == '<' && str[*nb + 1] == '<') {
-        copy = add_chars_to_str(copy, " << ");
+        copy = add_chars_after_str(copy, " << ");
         *nb += 1;
     } else copy = str_simple_char(copy, str, nb);
     return (copy);
@@ -69,10 +69,10 @@ char *str_direction(char *copy, char *str, int *nb)
 char *str_and_or(char *copy, char *str, int *nb)
 {
     if (str[*nb] == '&' && str[*nb + 1] == '&') {
-        copy = add_chars_to_str(copy, " && ");
+        copy = add_chars_after_str(copy, " && ");
         *nb += 1;
     } else if (str[*nb] == '|' && str[*nb + 1] == '|') {
-        copy = add_chars_to_str(copy, " || ");
+        copy = add_chars_after_str(copy, " || ");
         *nb += 1;
     } else copy = str_direction(copy, str, nb);
     return (copy);

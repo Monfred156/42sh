@@ -10,14 +10,14 @@ SRC	=	my_putstr.c				\
 		my_strlen.c				\
 		my_strcmp.c				\
 		my_realloc.c			\
-		add_chars_to_str.c		\
 		array_len.c				\
 		my_put_nbr.c			\
 		my_str_to_word_array.c	\
-		check_malloc.c          \
-		my_putstr_error.c       \
+		check_malloc.c			\
+		my_putstr_error.c		\
 		my_str_copy.c			\
-		my_stradd.c				\
+		add_chars_after_str.c	\
+		add_chars_before_str.c	\
 		my_free.c				\
 		my_str_count.c			\
 

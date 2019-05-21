@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-char *my_stradd(char *str, char *add)
+char *add_chars_before_str(char *str, char *add)
 {
     int size = my_strlen(str);
 

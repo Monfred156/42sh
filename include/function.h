@@ -53,4 +53,7 @@ int fill_array_after_redir(const char *string, char **array, int *rank, int i);
 int check_exit_command_exist(char **commands);
 int check_exit_value(char **commands);
 
+///error_handling.c///
+int check_error(char *string);
+
 #endif //PSU_42SH_2018_FUNCTION_H

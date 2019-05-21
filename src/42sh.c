@@ -12,7 +12,6 @@ int main_42sh(char **env)
     char *string = NULL;
     size_t len = 0;
     char **array;
-    int exit_value = 0;
     data_t *data = malloc(sizeof(data_t));
 
     get_env(env, data);
@@ -23,13 +22,8 @@ int main_42sh(char **env)
             return 84;
         string = str_clean(string);
         string = remove_n(string);
-        array = parse_string(string);
-        if (check_exit_command_exist(array) == 0) {
-            exit_value = check_exit_value(array);
-            if (exit_value != -1)
-                return (exit_value);
+        if (check_error(string) == 0) {
+            array = parse_string(string);
         }
-        for (int i = 0; array[i]; i++)
-           printf("%s\n", array[i]);
     }
 }

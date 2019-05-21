@@ -20,7 +20,8 @@ SRCS	=		./src/main.c			\
     			./src/env.c				\
 				./src/shell_excve.c		\
 				./src/fill_array_pars.c \
-				./src/exit.c
+				./src/exit.c            \
+				./src/error_handling.c  \
 
 OBJS	=	$(SRCS:.c=.o)
 

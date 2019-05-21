@@ -11,13 +11,14 @@ CC	= gcc
 
 RM	= rm -f
 
-SRCS	=		./src/main.c		\
-                ./src/history.c     \
-    			./src/42sh.c            \
-    			./src/parse_string.c    \
-    			./src/str_clean.c	\
-    			./src/remove_n.c        \
-    			./src/env.c             \
+SRCS	=		./src/main.c			\
+                ./src/history.c			\
+    			./src/42sh.c			\
+    			./src/parse_string.c	\
+    			./src/str_clean.c		\
+    			./src/remove_n.c		\
+    			./src/env.c				\
+				./src/shell_excve.c		\
 
 OBJS	=	$(SRCS:.c=.o)
 

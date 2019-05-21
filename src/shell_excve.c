@@ -5,9 +5,60 @@
 ** shell_excve.c
 */
 
+#include <unistd.h>
 #include <stdlib.h>
+#include "my.h"
 
-char *take_path(char *str, char **env)
+void check_all_path(char **path, char *copy, char *str)
 {
+    copy = my_stradd(copy, "/");
+    copy = my_stradd(copy, path[0]);
+    for (int nb = 0; path[nb] != NULL &&
+    access(str, X_OK) != 0; nb++) {
+        free(copy);
+        copy = my_str_copy(str);
+        copy = my_stradd(copy, "/");
+        copy = my_stradd(copy, path[nb]);
+    }
+    if (access(copy, X_OK) != 0 || my_str_count(str, '/') > 0) {
+        free(copy);
+        copy = my_str_copy(str);
+    }
+}
 
+char *access_path(char *str, char **env)
+{
+    char *copy = my_str_copy(str);
+    char *env_path;
+    char **path;
+    int nb;
+
+    for (nb = 0; env[nb] != NULL &&
+    my_strcmp(env[nb], "PATH=") != 1; nb++);
+    if (env[nb] != NULL) {
+        env_path = check_malloc_char(my_strlen(env[nb]) - 4);
+        for (int cpy = 5; env[cpy - 1] != '\0'; cpy++)
+            env_path[cpy - 5] = env[cpy];
+        path = my_str_to_word_array(env_path[nb], ':');
+        take_path_in_env(path, copy, str);
+    }
+    free(env_path);
+    my_free(path);
+    return (copy);
+}
+
+void excve_function(char *str, char **argv, char **env)
+{
+    char *copy = access_path(str, env);
+    int pid;
+
+    if (access(copy, X_OK) == 0) {
+        pid = fork();
+        if (pid < 0)
+            exit (84);
+        execve(copy, argv, env);
+    } else {
+        my_put_error(str);
+        my_put_error(": Command not found.\n");
+    }
 }

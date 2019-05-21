@@ -28,5 +28,9 @@ char **check_malloc_char_star(int size);
 int *check_malloc_int(int size);
 void my_put_nbr(int nb);
 char **my_str_to_word_array(char *map, char *character);
+char *my_str_copy(char *str);
+char *my_stradd(char *str, char *add);
+void my_free(char **str);
+void my_put_error(char const *str);
 
 #endif

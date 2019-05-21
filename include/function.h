@@ -26,7 +26,7 @@
 char **get_history(char **history, char *str);
 void print_history(char **history);
 
-///space_in_str///
+///str_clean.c///
 char *str_clean(char *str);
 
 ///42sh.c///
@@ -40,5 +40,8 @@ char **parse_string(char *string);
 
 ///remove_n.c///
 char *remove_n(char *string);
+
+///shell_excve.c///
+void excve_function(char *str, char **argv, char **env);
 
 #endif //PSU_42SH_2018_FUNCTION_H

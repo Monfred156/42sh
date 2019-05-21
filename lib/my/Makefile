@@ -14,7 +14,11 @@ SRC	=	my_putstr.c				\
 		array_len.c				\
 		my_put_nbr.c			\
 		my_str_to_word_array.c	\
-		check_malloc.c
+		check_malloc.c			\
+		my_str_copy.c			\
+		my_stradd.c				\
+		my_free.c				\
+		my_put_error.c			\
 
 OBJ	=	$(SRC:.c=.o)
 

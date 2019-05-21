@@ -7,6 +7,23 @@
 
 #include "function.h"
 
+void crash_file(int error)
+{
+    switch (WTERMSIG(error)) {
+        case SIGSEGV:
+            my_putstr_error("Segmentation fault");
+            break;
+        case SIGFPE:
+            my_putstr_error("Floating exception");
+            break;
+        default:
+            return;
+    }
+    if (WCOREDUMP(error))
+        my_putstr_error(" (core dumped)");
+    my_putstr_error("\n");
+}
+
 void check_all_path(char **path, char *copy, char *str)
 {
     copy = add_chars_before_str(copy, "/");
@@ -49,12 +66,18 @@ void excve_function(char *str, char **argv, char **env)
 {
     char *copy = access_path(str, env);
     int pid;
+    int error = 0;
 
     if (access(copy, X_OK) == 0) {
         pid = fork();
         if (pid < 0)
             exit (84);
-        execve(copy, argv, env);
+        if (pid == 0)
+            execve(copy, argv, env);
+        else {
+            waitpid(pid, &error, 0);
+            crash_file(error);
+        }
     } else {
         my_putstr_error(str);
         my_putstr_error(": Command not found.\n");

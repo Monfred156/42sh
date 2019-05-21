@@ -21,6 +21,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <limits.h>
+#include <signal.h>
 
 ///history.c///
 char **get_history(char **history, char *str);

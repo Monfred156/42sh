@@ -32,7 +32,6 @@ char *my_str_copy(char *str);
 char *add_chars_before_str(char *str, char *add);
 char *add_chars_after_str(char *str, char *add);
 void my_free(char **str);
-void my_put_error(char const *str);
 int my_str_count(char *str, char *chr);
 
 #endif

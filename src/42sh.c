@@ -12,7 +12,7 @@ int main_42sh(char **env)
     char *string = NULL;
     size_t len = 0;
     char **array;
-    data_t *data = NULL;
+    data_t *data = malloc(sizeof(data_t));
 
     get_env(env, data);
     while (1) {
@@ -22,6 +22,7 @@ int main_42sh(char **env)
             return 84;
         }
         string = str_clean(string);
+        printf("%s\n", string);
         string = remove_n(string);
         array = parse_string(string);
         for (int i = 0; array[i]; i++)

@@ -64,7 +64,6 @@ char *access_path(char *str, char **env)
 
 void excve_function(char **argv, char **env)
 {
-
     char *copy = access_path(argv[0], env);
     int pid;
     int error = 0;

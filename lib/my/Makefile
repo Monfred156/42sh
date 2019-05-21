@@ -19,6 +19,7 @@ SRC	=	my_putstr.c				\
 		my_stradd.c				\
 		my_free.c				\
 		my_put_error.c			\
+		my_str_count.c			\
 
 OBJ	=	$(SRC:.c=.o)
 

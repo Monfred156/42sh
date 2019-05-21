@@ -32,5 +32,6 @@ char *my_str_copy(char *str);
 char *my_stradd(char *str, char *add);
 void my_free(char **str);
 void my_put_error(char const *str);
+int my_str_count(char *str, char *chr);
 
 #endif

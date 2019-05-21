@@ -58,7 +58,7 @@ void malloc_str(char **result, char *map, char *character)
         result[0] = check_malloc_char(1);
 }
 
-char **my_to_word_array(char *map, char *character)
+char **my_str_to_word_array(char *map, char *character)
 {
     char **result;
     int count = 1;

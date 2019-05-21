@@ -5,9 +5,7 @@
 ** shell_excve.c
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "my.h"
+#include "function.h"
 
 void check_all_path(char **path, char *copy, char *str)
 {
@@ -20,7 +18,7 @@ void check_all_path(char **path, char *copy, char *str)
         copy = my_stradd(copy, "/");
         copy = my_stradd(copy, path[nb]);
     }
-    if (access(copy, X_OK) != 0 || my_str_count(str, '/') > 0) {
+    if (access(copy, X_OK) != 0 || my_str_count(str, "/") > 0) {
         free(copy);
         copy = my_str_copy(str);
     }
@@ -37,10 +35,10 @@ char *access_path(char *str, char **env)
     my_strcmp(env[nb], "PATH=") != 1; nb++);
     if (env[nb] != NULL) {
         env_path = check_malloc_char(my_strlen(env[nb]) - 4);
-        for (int cpy = 5; env[cpy - 1] != '\0'; cpy++)
-            env_path[cpy - 5] = env[cpy];
-        path = my_str_to_word_array(env_path[nb], ':');
-        take_path_in_env(path, copy, str);
+        for (int cpy = 5; env[nb][cpy - 1] != '\0'; cpy++)
+            env_path[cpy - 5] = env[nb][cpy];
+        path = my_str_to_word_array(env_path, ":");
+        check_all_path(path, copy, str);
     }
     free(env_path);
     my_free(path);

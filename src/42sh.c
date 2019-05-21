@@ -22,7 +22,6 @@ int main_42sh(char **env)
         if (getline(&string, &len, stdin) == -1)
             return 84;
         string = str_clean(string);
-        printf("%s\n", string);
         string = remove_n(string);
         array = parse_string(string);
         if (check_exit_command_exist(array) == 0) {

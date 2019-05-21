@@ -45,6 +45,10 @@ char *remove_n(char *string);
 ///shell_excve.c///
 void excve_function(char **argv, char **env);
 
+///file_array_pars.c///
+int fill_array_after_separa(const char *string, char **array, int *rank, int i);
+int fill_array_after_redir(const char *string, char **array, int *rank, int i);
+
 ///exit.c///
 int check_exit_command_exist(char **commands);
 int check_exit_value(char **commands);

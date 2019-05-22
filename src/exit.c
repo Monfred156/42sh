@@ -37,6 +37,7 @@ int check_error_exit(char *string)
             return (-1);
         }
     }
+    close(0);
     return (atoi(string) % 256);
 }
 

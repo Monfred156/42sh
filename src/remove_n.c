@@ -15,4 +15,3 @@ char *remove_n(char *string)
     }
     return string;
 }
-

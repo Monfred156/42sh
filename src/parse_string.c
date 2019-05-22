@@ -45,14 +45,16 @@ char **clean_array(char **array)
     for (int i = 0; array[i]; i++) {
         result[n] = malloc(sizeof(char) * (strlen(array[i]) + 1));
         for (int j = 0; array[i][j]; j++) {
-            if (array[i][0] == '\0')
-                i++;
-            result[n][m] = array[i][j];
-            m++;
+            if (array[i][0] == '\0') {
+            } else {
+                result[n][m] = array[i][j];
+                m++;
+            }
         }
         result[n][m] = '\0';
         m = 0;
-        n++;
+        if (array[i][0] != '\0')
+            n++;
     }
     result[n] = NULL;
     free(array);

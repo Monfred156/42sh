@@ -93,5 +93,6 @@ char *str_clean(char *str)
     for (int nb = 0; str[nb] != '\0'; nb++)
         copy = str_and_or(copy, str, &nb);
     copy = del_to_much_space(copy);
+    free(str);
     return (copy);
 }

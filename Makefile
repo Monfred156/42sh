@@ -25,6 +25,7 @@ SRCS	=		./src/main.c		            	\
 				./src/search_function.c         	\
 				./src/replace_environnement_var.c   \
 				./src/and_or_function.c             \
+				./src/all_redir.c                   \
 
 OBJS	=	$(SRCS:.c=.o)
 

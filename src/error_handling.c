@@ -89,8 +89,6 @@ int check_invalid_command(char **array)
 int check_error(char *string)
 {
     char **array = my_str_to_word_array(string, " ");
-    for (int i = 0; array[i]; i++)
-        printf("%s\n", array[i]);
     if (check_invalid_command(array) == 1)
         return 1;
     return 0;

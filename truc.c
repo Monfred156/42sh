@@ -14,10 +14,9 @@ char **get_next_tab(int *i, char **cmd_parsed)
     char **tab = malloc(sizeof(char *) * 30);
     int cpt = 0;
 
-    while (my_strcmp(cmd_parsed[(*i)], "&&") == 1 &&
+    while (cmd_parsed[(*i)] && my_strcmp(cmd_parsed[(*i)], "&&") == 1 &&
         my_strcmp(cmd_parsed[(*i)], "||") == 1 &&
-        my_strcmp(cmd_parsed[(*i)], ";") == 1)
-    {
+        my_strcmp(cmd_parsed[(*i)], ";") == 1) {
         tab[cpt] = my_strdup(cmd_parsed[(*i)]);
         (*i)++;
         cpt++;
@@ -35,5 +34,7 @@ void get_str(char **cmd_parsed, data_t *data)
         my_tab = get_next_tab(&i, cmd_parsed);
         function(my_tab, data);
         free_tab(my_tab);
+        if (!cmd_parsed[i])
+            return;
     }
 }

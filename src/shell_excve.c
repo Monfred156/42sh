@@ -29,7 +29,7 @@ char *check_all_path(char **path, char *copy, char *str)
     copy = add_chars_before_str(copy, "/");
     copy = add_chars_before_str(copy, path[0]);
     for (int nb = 0; path[nb] != NULL &&
-    access(str, X_OK) != 0; nb++) {
+    access(copy, X_OK) != 0; nb++) {
         free(copy);
         copy = my_str_copy(str);
         copy = add_chars_before_str(copy, "/");

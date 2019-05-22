@@ -43,6 +43,21 @@ int string_is_redir(char *string)
     return 1;
 }
 
+int ambigous_redirect(char **array, int i)
+{
+    if (strcmp(array[i], "|") == 0 && array[i + 1] != NULL && (strcmp
+        (array[i + 2], "<") == 0 || strcmp(array[i + 2], "<<") == 0)) {
+        my_putstr("Ambiguous input redirect.\n");
+        return 1;
+    }
+    if ((strcmp(array[i], ">") == 0 || strcmp(array[i], ">>") == 0) &&
+        array[i + 1] != NULL && strcmp(array[i + 2], "|") == 0) {
+        my_putstr("Ambiguous output redirect.\n");
+        return 1;
+    }
+    return 0;
+}
+
 int check_invalid_command(char **array)
 {
     for (int i = 0; array[i]; i++) {
@@ -60,16 +75,8 @@ int check_invalid_command(char **array)
             my_putstr("Invalid null command.\n");
             return 1;
         }
-        if (strcmp(array[i], "|") == 0 && array[i + 1] != NULL && (strcmp
-        (array[i + 2], "<") == 0 || strcmp(array[i + 2], "<<") == 0)) {
-            my_putstr("Ambiguous input redirect.\n");
+        if (ambigous_redirect(array, i) == 1)
             return 1;
-        }
-        if ((strcmp(array[i], ">") == 0 || strcmp(array[i], ">>") == 0) &&
-        array[i+1] != NULL && strcmp(array[i+2], "|") == 0) {
-            my_putstr("Ambiguous output redirect.\n");
-            return 1;
-        }
     }
     return 0;
 }
@@ -77,8 +84,6 @@ int check_invalid_command(char **array)
 int check_error(char *string)
 {
     char **array = my_str_to_word_array(string, " ");
-    /*for (int i = 0; array[i]; i++)
-        printf("%s\n", array[i]);*/
     if (check_invalid_command(array) == 1)
         return 1;
     return 0;

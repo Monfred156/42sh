@@ -12,9 +12,9 @@ int main_42sh(char **env)
     char *string = NULL;
     size_t len = 0;
     char **array;
-    data_t *data = malloc(sizeof(data_t));
+    data_t data;
 
-    get_env(env, data);
+    get_env(env, &data);
     while (1) {
         if (isatty(0))
             my_putstr("42sh> ");
@@ -24,6 +24,9 @@ int main_42sh(char **env)
         string = remove_n(string);
         if (check_error(string) == 0) {
             array = parse_string(string);
+            array = replace_environnement_var(array, &data);
+            for (int i = 0; array[i]; i++)
+                printf("%s\n", array[i]);
         }
     }
 }

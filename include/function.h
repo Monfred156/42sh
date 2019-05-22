@@ -59,4 +59,7 @@ int check_exit_value(char **commands);
 ///error_handling.c///
 int check_error(char *string);
 
+///replace_environnement_var.c///
+char **replace_environnement_var(char **array, data_t *data);
+
 #endif //PSU_42SH_2018_FUNCTION_H

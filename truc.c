@@ -8,15 +8,28 @@
 #include <stdlib.h>
 #include "function.h"
 
+int count_str_left(char **tab, int act_cpt)
+{
+    int nbr = 0;
+
+    while (tab[act_cpt] && strcmp(tab[act_cpt], "&&") != 0 &&
+        strcmp(tab[act_cpt], "||") != 0 &&
+        strcmp(tab[act_cpt], ";") != 0) {
+        nbr++;
+        act_cpt++;
+    }
+    return (nbr);
+}
+
 char **get_next_tab(int *i, char **cmd_parsed)
 {
-    char **tab = malloc(sizeof(char *) * 30);
     int cpt = 0;
+    char **tab = malloc(sizeof(char *) * (count_str_left(cmd_parsed, *i) + 1));
 
-    while (cmd_parsed[(*i)] && my_strcmp(cmd_parsed[(*i)], "&&") == 84 &&
-            (my_strcmp(cmd_parsed[(*i)], "||") == 84 || my_strcmp(cmd_parsed[(*i)], "||") == -1) &&
-        my_strcmp(cmd_parsed[(*i)], ";") == 84) {
-        tab[cpt] = my_strdup(cmd_parsed[(*i)]);
+    while (cmd_parsed[(*i)] && strcmp(cmd_parsed[(*i)], "&&") != 0 &&
+        strcmp(cmd_parsed[(*i)], "||") != 0 &&
+        strcmp(cmd_parsed[(*i)], ";") != 0) {
+        tab[cpt] = strdup(cmd_parsed[(*i)]);
         (*i)++;
         cpt++;
     }
@@ -27,7 +40,6 @@ char **get_next_tab(int *i, char **cmd_parsed)
 void get_str(char **cmd_parsed, data_t *data)
 {
     char **my_tab = NULL;
-    int operand = 0;
 
     for (int i = 0; cmd_parsed[i]; i++) {
         my_tab = get_next_tab(&i, cmd_parsed);

@@ -8,6 +8,22 @@
 #include <unistd.h>
 #include <my.h>
 #include <stdlib.h>
+#include <function.h>
+
+int look_around_exit(char **commands)
+{
+    int exit_value;
+    int place = check_exit_command_exist(commands);
+
+    if (place == -1)
+        return (-1);
+    if (commands[place + 1][0] == '|')
+        return (-2);
+    exit_value = check_exit_value(commands);
+    if (exit_value == -1)
+        return (-1);
+    return (exit_value);
+}
 
 int check_error_exit(char *string)
 {
@@ -54,6 +70,6 @@ int check_exit_command_exist(char **commands)
     while (commands[x] != NULL && my_strncmp("exit", commands[x], 4) != 0)
         x++;
     if (commands[x] == NULL)
-        return (1);
-    return (0);
+        return (-1);
+    return (x);
 }

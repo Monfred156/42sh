@@ -67,4 +67,7 @@ char **replace_environnement_var(char **array, data_t *data);
 int and_function(char *str, char **env, int result);
 int or_function(char *str, char **env, int result);
 
+///free.c///
+void free_char_double_star(char **array);
+
 #endif //PSU_42SH_2018_FUNCTION_H

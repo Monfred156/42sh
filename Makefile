@@ -29,7 +29,8 @@ SRCS	=		./src/main.c		            	\
 				truc.c                              \
 				./src/get_array_from_and_or_final.c \
 				./src/pipe.c                        \
-##				./src/and_or_function.c             \
+				./src/create_argv.c					\
+#				./src/and_or_function.c             \
 
 OBJS	=	$(SRCS:.c=.o)
 

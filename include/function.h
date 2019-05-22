@@ -84,4 +84,7 @@ void first_pipe(int *inout_put, char **array);
 void middle_pipe(int *inout_put, char **array);
 void last_pipe(int *inout_put, char **array);
 
+///create_argv.c///
+char **create_argv(char *str);
+
 #endif //PSU_42SH_2018_FUNCTION_H

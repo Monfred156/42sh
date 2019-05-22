@@ -46,7 +46,7 @@ char *remove_n(char *string);
 int excve_function(char **argv, char **env);
 
 ///search_function.c///
-int search_builtin_function(char *str, char **env);
+int search_builtin_function(char *str, char **env, int *inout_put);
 
 ///file_array_pars.c///
 int fill_array_after_separa(const char *string, char **array, int *rank, int i);
@@ -69,5 +69,19 @@ int or_function(char *str, char **env, int result);
 
 ///free.c///
 void free_char_double_star(char **array);
+
+///all_redir.c///
+void check_redir_and_path(char **array, int *inout, int i);
+
+///truc.c///
+void get_str(char **cmd_parsed, data_t *data);
+
+///get_array_from_and_or_final.c///
+int get_array_from_and_or_final(data_t *data, char **array);
+
+///pipe.c///
+void first_pipe(int *inout_put, char **array);
+void middle_pipe(int *inout_put, char **array);
+void last_pipe(int *inout_put, char **array);
 
 #endif //PSU_42SH_2018_FUNCTION_H

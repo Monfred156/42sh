@@ -21,6 +21,8 @@ SRC	=	my_putstr.c				\
 		my_free.c				\
 		my_str_count.c			\
 		my_strncmp.c            \
+		my_strdup.c		\
+		my_strcat.c
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -34,5 +34,7 @@ char *add_chars_after_str(char *str, char *add);
 void my_free(char **str);
 int my_str_count(char *str, char *chr);
 int my_strncmp(char const *, char const *, int);
+char *my_strdup(char *str);
+char *my_strcat(char *str1, char const *str2);
 
 #endif

@@ -6,17 +6,16 @@
 */
 
 #include <stdlib.h>
-#include "my.h"
-#include "struct.h"
+#include "function.h"
 
 char **get_next_tab(int *i, char **cmd_parsed)
 {
     char **tab = malloc(sizeof(char *) * 30);
     int cpt = 0;
 
-    while (cmd_parsed[(*i)] && my_strcmp(cmd_parsed[(*i)], "&&") == 1 &&
-        my_strcmp(cmd_parsed[(*i)], "||") == 1 &&
-        my_strcmp(cmd_parsed[(*i)], ";") == 1) {
+    while (cmd_parsed[(*i)] && my_strcmp(cmd_parsed[(*i)], "&&") == 84 &&
+            (my_strcmp(cmd_parsed[(*i)], "||") == 84 || my_strcmp(cmd_parsed[(*i)], "||") == -1) &&
+        my_strcmp(cmd_parsed[(*i)], ";") == 84) {
         tab[cpt] = my_strdup(cmd_parsed[(*i)]);
         (*i)++;
         cpt++;
@@ -32,8 +31,8 @@ void get_str(char **cmd_parsed, data_t *data)
 
     for (int i = 0; cmd_parsed[i]; i++) {
         my_tab = get_next_tab(&i, cmd_parsed);
-        function(my_tab, data);
-        free_tab(my_tab);
+        get_array_from_and_or_final(data, my_tab);
+        my_free(my_tab);
         if (!cmd_parsed[i])
             return;
     }

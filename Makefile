@@ -24,9 +24,12 @@ SRCS	=		./src/main.c		            	\
 				./src/error_handling.c              \
 				./src/search_function.c         	\
 				./src/replace_environnement_var.c   \
-				./src/and_or_function.c             \
 				./src/all_redir.c                   \
 				./src/free.c                        \
+				truc.c                              \
+				./src/get_array_from_and_or_final.c \
+				./src/pipe.c                        \
+##				./src/and_or_function.c             \
 
 OBJS	=	$(SRCS:.c=.o)
 

@@ -24,7 +24,7 @@ void crash_file(int error)
     my_putstr_error("\n");
 }
 
-void check_all_path(char **path, char *copy, char *str)
+char *check_all_path(char **path, char *copy, char *str)
 {
     copy = add_chars_before_str(copy, "/");
     copy = add_chars_before_str(copy, path[0]);
@@ -39,6 +39,7 @@ void check_all_path(char **path, char *copy, char *str)
         free(copy);
         copy = my_str_copy(str);
     }
+    return (copy);
 }
 
 char *access_path(char *str, char **env)
@@ -55,7 +56,7 @@ char *access_path(char *str, char **env)
         for (int cpy = 5; env[nb][cpy - 1] != '\0'; cpy++)
             env_path[cpy - 5] = env[nb][cpy];
         path = my_str_to_word_array(env_path, ":");
-        check_all_path(path, copy, str);
+        copy = check_all_path(path, copy, str);
     }
     free(env_path);
     my_free(path);

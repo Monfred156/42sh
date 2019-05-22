@@ -73,7 +73,7 @@ void free_char_double_star(char **array);
 ///all_redir.c///
 void check_redir_and_path(char **array, int *inout, int i);
 
-///truc.c///
+///parser_and_or_semicolon.c///
 void get_str(char **cmd_parsed, data_t *data);
 
 ///get_array_from_and_or_final.c///

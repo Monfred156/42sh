@@ -26,7 +26,7 @@ SRCS	=		./src/main.c		            	\
 				./src/replace_environnement_var.c   \
 				./src/all_redir.c                   \
 				./src/free.c                        \
-				truc.c                              \
+				./src/parser_and_or_semicolon.c                              \
 				./src/get_array_from_and_or_final.c \
 				./src/pipe.c                        \
 				./src/create_argv.c					\

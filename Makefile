@@ -11,19 +11,20 @@ CC	= gcc
 
 RM	= rm -f
 
-SRCS	=		./src/main.c			\
-                ./src/history.c			\
-    			./src/42sh.c			\
-    			./src/parse_string.c	\
-    			./src/str_clean.c		\
-    			./src/remove_n.c		\
-    			./src/env.c				\
-				./src/shell_excve.c		\
-				./src/fill_array_pars.c \
-				./src/exit.c            \
-				./src/error_handling.c  \
-				./src/search_function.c	\
-				./src/and_or_function.c \
+SRCS	=		./src/main.c		            	\
+                ./src/history.c			            \
+    			./src/42sh.c			            \
+    			./src/parse_string.c	            \
+    			./src/str_clean.c		            \
+    			./src/remove_n.c		            \
+    			./src/env.c				            \
+				./src/shell_excve.c		            \
+				./src/fill_array_pars.c             \
+				./src/exit.c                        \
+				./src/error_handling.c              \
+				./src/search_function.c         	\
+				./src/replace_environnement_var.c   \
+				./src/and_or_function.c             \
 
 OBJS	=	$(SRCS:.c=.o)
 

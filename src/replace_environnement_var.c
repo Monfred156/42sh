@@ -9,9 +9,12 @@
 
 char **replace_environnement_var(char **array, data_t *data)
 {
+    char **array_str;
+
     for (int i = 0; array[i];i++) {
-        for (int j = 0; array[i][j]; j++) {
-            if (array[i][j] == '$')
+        array_str = my_str_to_word_array(array[i], " ");
+        for (int j = 0; array_str[j]; j++) {
+            printf("%s\n", array_str[j]);
         }
     }
     return array;

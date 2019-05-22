@@ -65,7 +65,7 @@ int check_invalid_command(char **array)
             my_putstr("Ambiguous input redirect.\n");
             return 1;
         }
-        if ((strcmp(array[i], ">") == 0 || strcmp(array[i], ">>")) &&
+        if ((strcmp(array[i], ">") == 0 || strcmp(array[i], ">>") == 0) &&
         array[i+1] != NULL && strcmp(array[i+2], "|") == 0) {
             my_putstr("Ambiguous output redirect.\n");
             return 1;

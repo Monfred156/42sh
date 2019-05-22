@@ -23,6 +23,7 @@ SRCS	=		./src/main.c			\
 				./src/exit.c            \
 				./src/error_handling.c  \
 				./src/search_function.c	\
+				./src/and_or_function.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

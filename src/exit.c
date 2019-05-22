@@ -17,7 +17,7 @@ int look_around_exit(char **commands)
 
     if (place == -1)
         return (-1);
-    if (commands[place + 1][0] == '|')
+    if (commands[place + 1] != NULL && commands[place + 1][0] == '|')
         return (-2);
     exit_value = check_exit_value(commands);
     if (exit_value == -1)

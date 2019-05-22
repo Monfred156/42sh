@@ -63,4 +63,8 @@ int check_error(char *string);
 ///replace_environnement_var.c///
 char **replace_environnement_var(char **array, data_t *data);
 
+///and_or_function.c///
+int and_function(char *str, char **env, int result);
+int or_function(char *str, char **env, int result);
+
 #endif //PSU_42SH_2018_FUNCTION_H

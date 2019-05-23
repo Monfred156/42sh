@@ -19,7 +19,7 @@ int look_around_exit(char **commands)
         return (-1);
     if (commands[place + 1] != NULL && commands[place + 1][0] == '|')
         return (-2);
-    exit_value = check_exit_value(commands);
+    exit_value = check_exit_value(commands[place]);
     if (exit_value == -1)
         return (-1);
     return (exit_value);
@@ -38,25 +38,25 @@ int check_error_exit(char *string)
         }
     }
     close(0);
-    return (atoi(string) % 256);
+    return (atoi(string));
 }
 
-int check_exit_value(char **commands)
+int check_exit_value(char *buf)
 {
     int x = 0;
     int y = 4;
     int place = 0;
     char *string;
 
-    while (my_strncmp(commands[x], "exit", 4) != 0)
+    while (my_strncmp(buf, "exit", 4) != 0)
         x++;
-    while (commands[x][y] == ' ')
+    while (buf[y] == ' ')
         y++;
-    if (commands[x][y] == '\0')
+    if (buf[y] == '\0')
         return (0);
-    string = check_malloc_char(my_strlen(commands[x]) - 4);
-    while (commands[x][y] != '\0') {
-        string[place] = commands[x][y];
+    string = check_malloc_char(my_strlen(buf) - 4);
+    while (buf[y] != '\0') {
+        string[place] = buf[y];
         y++;
         place++;
     }

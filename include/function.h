@@ -54,7 +54,7 @@ int fill_array_after_redir(const char *string, char **array, int *rank, int i);
 
 ///exit.c///
 int check_exit_command_exist(char **commands);
-int check_exit_value(char **commands);
+int check_exit_value(char *commands);
 int look_around_exit(char **commands);
 
 ///error_handling.c///

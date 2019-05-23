@@ -57,9 +57,9 @@ char *access_path(char *str, char **env)
             env_path[cpy - 5] = env[nb][cpy];
         path = my_str_to_word_array(env_path, ":");
         copy = check_all_path(path, copy, str);
+        free(env_path);
+        my_free(path);
     }
-    free(env_path);
-    my_free(path);
     return (copy);
 }
 

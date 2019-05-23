@@ -9,11 +9,14 @@
 
 int get_array_from_and_or_final(data_t *data, char **array)
 {
+    bool exec = true;
     int value = 0;
     int inout_put[2] = {0, 1};
     for (int i = 0; array[i]; i++) {
         if (array[i + 1] != NULL && (array[i + 1][0] == '>' || array[i + 1][0] == '<')) {
-            check_redir_and_path(array, inout_put, i + 1);
+            exec = check_redir_and_path(array, inout_put, i + 1);
+            if (exec == false)
+                break;
             i--;
         } else {
             if (i > 0) {

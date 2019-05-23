@@ -22,6 +22,7 @@
 #include <fcntl.h>
 #include <limits.h>
 #include <signal.h>
+#include <stdbool.h>
 
 ///history.c///
 char **get_history(char **history, char *str);
@@ -71,7 +72,7 @@ int or_function(char *str, char **env, int result);
 void free_char_double_star(char **array);
 
 ///all_redir.c///
-void check_redir_and_path(char **array, int *inout, int i);
+bool check_redir_and_path(char **array, int *inout, int i);
 
 ///parser_and_or_semicolon.c///
 void get_str(char **cmd_parsed, data_t *data);

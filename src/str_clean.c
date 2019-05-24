@@ -62,7 +62,8 @@ char *str_direction(char *copy, char *str, int *nb)
     } else if (str[*nb] == '<' && str[*nb + 1] == '<') {
         copy = add_chars_after_str(copy, " << ");
         *nb += 1;
-    } else copy = str_simple_char(copy, str, nb);
+    } else
+        copy = str_simple_char(copy, str, nb);
     return (copy);
 }
 
@@ -74,7 +75,8 @@ char *str_and_or(char *copy, char *str, int *nb)
     } else if (str[*nb] == '|' && str[*nb + 1] == '|') {
         copy = add_chars_after_str(copy, " || ");
         *nb += 1;
-    } else copy = str_direction(copy, str, nb);
+    } else
+        copy = str_direction(copy, str, nb);
     return (copy);
 }
 

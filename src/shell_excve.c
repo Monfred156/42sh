@@ -7,6 +7,12 @@
 
 #include "function.h"
 
+void print_command_not_found(char *str)
+{
+    my_putstr_error(str);
+    my_putstr_error(": Command not found.\n");
+}
+
 void crash_file(int error)
 {
     switch (WTERMSIG(error)) {
@@ -67,21 +73,21 @@ int excve_function(char **argv, char **env)
 {
     char *copy = access_path(argv[0], env);
     int pid;
-    int error = 0;
+    int error = 1;
 
     if (access(copy, X_OK) == 0) {
         pid = fork();
         if (pid < 0)
             exit (84);
         if (pid == 0)
-            return (execve(copy, argv, env));
+            execve(copy, argv, env);
         else {
             waitpid(pid, &error, 0);
             crash_file(error);
         }
-    } else {
-        my_putstr_error(argv[0]);
-        my_putstr_error(": Command not found.\n");
-    }
-    return (1);
+    } else
+        print_command_not_found(argv[0]);
+    if (error > 1)
+        return (1);
+    return (error);
 }

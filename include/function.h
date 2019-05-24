@@ -34,7 +34,7 @@ char *str_clean(char *str);
 ///42sh.c///
 int main_42sh(char **env);
 
-///env.c///
+///get_env.c///
 void get_env(char **env, data_t *data);
 
 ///parse_string.c///
@@ -44,10 +44,10 @@ char **parse_string(char *string);
 char *remove_n(char *string);
 
 ///shell_excve.c///
-int excve_function(char **argv, char **env);
+int excve_function(char **argv, data_t *data);
 
 ///search_function.c///
-int search_builtin_function(char *str, char **env, int *inout_put);
+int search_builtin_function(char *str, data_t *data, int *inout_put);
 
 ///file_array_pars.c///
 int fill_array_after_separa(const char *string, char **array, int *rank, int i);
@@ -87,5 +87,15 @@ void last_pipe(int *inout_put, char **array);
 
 ///create_argv.c///
 char **create_argv(char *str);
+
+///env.c///
+void print_env(char **cpy_env);
+
+///setenv.c///
+int check_setenv(char **array, data_t *data);
+int check_arg(char **array, data_t *data, int count);
+
+///unsetenv.c///
+int check_unsetenv(char **array, data_t *data);
 
 #endif //PSU_42SH_2018_FUNCTION_H

@@ -30,6 +30,9 @@ SRCS	=		./src/main.c		            	\
 				./src/get_array_from_and_or_final.c \
 				./src/pipe.c                        \
 				./src/create_argv.c					\
+				./src/setenv.c                      \
+				./src/get_env.c                     \
+				./src/unsetenv.c                    \
 #				./src/and_or_function.c             \
 
 OBJS	=	$(SRCS:.c=.o)

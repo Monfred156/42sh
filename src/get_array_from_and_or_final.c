@@ -39,7 +39,7 @@ int get_array_from_and_or_final(data_t *data, char **array)
                 first_pipe(inout_put, array);
         }
         if (i >= 0)
-            value = search_builtin_function(array[i], data->cpy_env, inout_put);
+            value = search_builtin_function(array[i], data, inout_put);
     }
     return (value);
 }

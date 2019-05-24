@@ -49,19 +49,19 @@ char *check_all_path(char **path, char *copy, char *str)
     return (copy);
 }
 
-char *access_path(char *str, char **env)
+char *access_path(char *str, data_t *data)
 {
     char *copy = my_str_copy(str);
     char *env_path;
     char **path;
     int nb;
 
-    for (nb = 0; env[nb] != NULL &&
-    my_strcmp(env[nb], "PATH=") != 1; nb++);
-    if (env[nb] != NULL) {
-        env_path = check_malloc_char(my_strlen(env[nb]) - 4);
-        for (int cpy = 5; env[nb][cpy - 1] != '\0'; cpy++)
-            env_path[cpy - 5] = env[nb][cpy];
+    for (nb = 0; data->cpy_env[nb] != NULL &&
+    my_strcmp(data->cpy_env[nb], "PATH=") != 1; nb++);
+    if (data->cpy_env[nb] != NULL) {
+        env_path = check_malloc_char(my_strlen(data->cpy_env[nb]) - 4);
+        for (int cpy = 5; data->cpy_env[nb][cpy - 1] != '\0'; cpy++)
+            env_path[cpy - 5] = data->cpy_env[nb][cpy];
         path = my_str_to_word_array(env_path, ":");
         copy = check_all_path(path, copy, str);
         free(env_path);
@@ -70,9 +70,9 @@ char *access_path(char *str, char **env)
     return (copy);
 }
 
-int excve_function(char **argv, char **env)
+int excve_function(char **argv, data_t *data)
 {
-    char *copy = access_path(argv[0], env);
+    char *copy = access_path(argv[0], data);
     int pid;
     int status = 1;
 
@@ -81,7 +81,7 @@ int excve_function(char **argv, char **env)
         if (pid < 0)
             exit (84);
         if (pid == 0)
-            execve(copy, argv, env);
+            execve(copy, argv, data->cpy_env);
         else {
             waitpid(pid, &status, 0);
             crash_file(status);

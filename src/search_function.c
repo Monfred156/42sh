@@ -7,18 +7,24 @@
 
 #include "function.h"
 
-int search_env_function(char **argv, char **env)
+int search_env_function(char **argv, data_t *data)
 {
-    if (my_strcmp(argv[0], "env") == 0)
-        return(0);
-    if (my_strcmp(argv[0], "setenv") == 0)
-        return(0);
-    if (my_strcmp(argv[0], "unsetenv") == 0)
-        return(0);
-    return (excve_function(argv, env));
+    if (my_strcmp(argv[0], "env") == 0) {
+        print_env(data->cpy_env);
+        return (0);
+    }
+    if (my_strcmp(argv[0], "setenv") == 0) {
+        check_setenv(argv, data);
+        return (0);
+    }
+    if (my_strcmp(argv[0], "unsetenv") == 0) {
+        check_unsetenv(argv, data);
+        return (0);
+    }
+    return (excve_function(argv, data));
 }
 
-int search_builtin_function(char *str, char **env, int *inout_put)
+int search_builtin_function(char *str, data_t *data, int *inout_put)
 {
     int cpy_in = dup(0);
     int cpy_out = dup(1);
@@ -31,7 +37,7 @@ int search_builtin_function(char *str, char **env, int *inout_put)
         return(0);
     if (my_strcmp(argv[0], "cd") == 0)
         return(0);
-    value = search_env_function(argv, env);
+    value = search_env_function(argv, data);
     dup2(cpy_in, 0);
     dup2(cpy_out, 1);
     return (value);

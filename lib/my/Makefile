@@ -23,6 +23,7 @@ SRC	=	my_putstr.c				\
 		my_strncmp.c            \
 		my_strdup.c		        \
 		my_strcat.c             \
+		cpy_array.c             \
 
 OBJ	=	$(SRC:.c=.o)
 

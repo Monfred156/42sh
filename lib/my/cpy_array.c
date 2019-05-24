@@ -5,7 +5,7 @@
 ** array
 */
 
-#include "../../include/my.h"
+#include "function.h"
 #include <stdlib.h>
 
 char **cpy_array(char **array)

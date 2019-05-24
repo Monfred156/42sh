@@ -57,7 +57,7 @@ fclean: clean
 	$(RM) $(NAME)
 
 clean_test:
-	rm ./src/*.gcda
 	rm ./src/*.gcno
+	rm ./src/*.gcda
 
 re: fclean all

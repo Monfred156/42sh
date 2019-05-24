@@ -30,6 +30,8 @@ void print_history(char **history);
 
 ///str_clean.c///
 char *str_clean(char *str);
+char *str_and_or(char *copy, char *str, int *nb);
+char *str_simple_char(char *copy, char *str, int *nb);
 
 ///42sh.c///
 int main_42sh(char **env);

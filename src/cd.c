@@ -5,7 +5,7 @@
 ** .c
 */
 
-#include "include/my.h"
+#include "function.h"
 
 char *recup_home(char **cpy_env)
 {
@@ -84,6 +84,7 @@ void check_cd(char **array, char **cpy_env, char **old_pwd)
 {
     char cwd[256];
     static int count = 0;
+
     getcwd(cwd, sizeof(cwd));
     if (old_pwd[0] == NULL)
         old_pwd[1] = recup_old_pwd(cpy_env);

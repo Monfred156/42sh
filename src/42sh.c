@@ -19,13 +19,13 @@ int main_42sh(char **env)
         if (isatty(0))
             my_putstr("42sh> ");
         if (getline(&string, &len, stdin) == -1)
-            return 84;
+            return 0;
         string = str_clean(string);
         string = remove_n(string);
         if (check_error(string) == 0) {
             array = parse_string(string);
-            get_str(array, &data);
             array = replace_environnement_var(array, &data);
+            //get_str(array, &data);
         }
         string = NULL;
     }

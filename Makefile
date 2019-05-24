@@ -56,4 +56,8 @@ fclean: clean
 	@make fclean -C ./lib/my
 	$(RM) $(NAME)
 
+clean_test:
+	rm ./src/*.gcda
+	rm ./src/*.gcno
+
 re: fclean all

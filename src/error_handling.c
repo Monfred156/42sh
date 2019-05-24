@@ -7,6 +7,17 @@
 
 #include "function.h"
 
+int string_is_sep_no_redir(char *string)
+{
+    if (string == NULL)
+        return 0;
+    if (strcmp(string, "|") == 0)
+        return 0;
+    if (strcmp(string, "||") == 0)
+        return 0;
+    return 1;
+}
+
 int string_is_separator(char *string)
 {
     if (string == NULL)
@@ -24,8 +35,6 @@ int string_is_separator(char *string)
     if (strcmp(string, "<") == 0)
         return 0;
     if (strcmp(string, "&&") == 0)
-        return 0;
-    if (strcmp(string, ";") == 0)
         return 0;
     return 1;
 }
@@ -71,12 +80,9 @@ int check_invalid_command(char **array)
             my_putstr("Missing name for redirect.\n");
             return 1;
         }
-        if (string_is_separator(array[i]) == 0 && string_is_separator
-        (array[i+1]) == 0) {
-            my_putstr("Invalid null command.\n");
-            return 1;
-        }
-        if (string_is_redir(array[i]) == 0 && i == 0) {
+        if ((string_is_separator(array[i]) == 0 && string_is_separator
+        (array[i+1]) == 0) || (i == 0 && string_is_sep_no_redir(array[i]) ==
+        0 )) {
             my_putstr("Invalid null command.\n");
             return 1;
         }
@@ -88,8 +94,8 @@ int check_invalid_command(char **array)
 
 int check_error(char *string)
 {
-    char **array = my_str_to_word_array(string, " ");
+    char **array = create_argv(string);
     if (check_invalid_command(array) == 1)
-        return 1;
+           return 1;
     return 0;
 }

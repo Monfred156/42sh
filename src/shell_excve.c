@@ -13,9 +13,9 @@ void print_command_not_found(char *str)
     my_putstr_error(": Command not found.\n");
 }
 
-void crash_file(int error)
+void crash_file(int status)
 {
-    switch (WTERMSIG(error)) {
+    switch (WTERMSIG(status)) {
         case SIGSEGV:
             my_putstr_error("Segmentation fault");
             break;
@@ -25,7 +25,7 @@ void crash_file(int error)
         default:
             return;
     }
-    if (WCOREDUMP(error))
+    if (WCOREDUMP(status))
         my_putstr_error(" (core dumped)");
     my_putstr_error("\n");
 }
@@ -41,7 +41,8 @@ char *check_all_path(char **path, char *copy, char *str)
         copy = add_chars_before_str(copy, "/");
         copy = add_chars_before_str(copy, path[nb]);
     }
-    if (access(copy, X_OK) != 0 || my_str_count(str, "/") > 0) {
+    if (access(copy, X_OK) != 0 || my_str_count(str, "/") > 0 ||
+    my_str_count(str, ".") == 1) {
         free(copy);
         copy = my_str_copy(str);
     }
@@ -73,7 +74,7 @@ int excve_function(char **argv, char **env)
 {
     char *copy = access_path(argv[0], env);
     int pid;
-    int error = 1;
+    int status = 1;
 
     if (access(copy, X_OK) == 0) {
         pid = fork();
@@ -82,12 +83,12 @@ int excve_function(char **argv, char **env)
         if (pid == 0)
             execve(copy, argv, env);
         else {
-            waitpid(pid, &error, 0);
-            crash_file(error);
+            waitpid(pid, &status, 0);
+            crash_file(status);
         }
     } else
         print_command_not_found(argv[0]);
-    if (error > 1)
-        return (1);
-    return (error);
+    if (status != 0)
+        return (ERROR);
+    return (VALID);
 }

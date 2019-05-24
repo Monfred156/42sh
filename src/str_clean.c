@@ -13,8 +13,6 @@ char *del_to_much_space(char *str)
     char *copy = check_malloc_char(1);
     int count = 1;
 
-    if (copy == NULL)
-        return (NULL);
     copy[0] = '\0';
     for (int nb = 0; str[nb] != '\0'; nb++) {
         if (str[nb] == ' ')
@@ -89,8 +87,6 @@ char *str_clean(char *str)
             str[nb] = ' ';
     if (my_strlen(str) == 0)
         return (NULL);
-    if (copy == NULL)
-        exit (84);
     copy[0] = '\0';
     for (int nb = 0; str[nb] != '\0'; nb++)
         copy = str_and_or(copy, str, &nb);

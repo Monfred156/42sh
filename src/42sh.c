@@ -25,7 +25,7 @@ int main_42sh(char **env)
         if (check_error(string) == 0) {
             array = parse_string(string);
             array = replace_environnement_var(array, &data);
-            //get_str(array, &data);
+            get_str(array, &data);
         }
         string = NULL;
     }

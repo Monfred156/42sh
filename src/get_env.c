@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** env
+** get_env
 ** File description:
-** .c
+** get_env.c
 */
 
 #include <unistd.h>
@@ -22,8 +22,8 @@ void get_env(char **env, data_t *data)
 {
     int x = 0;
     int y = 0;
-    data->cpy_env = check_malloc_char_star(array_len(env) + 1);
 
+    data->cpy_env = check_malloc_char_star(array_len(env) + 1);
     while (env[x] != NULL) {
         data->cpy_env[x] = check_malloc_char(my_strlen(env[x]) + 1);
         while (env[x][y] != '\0' && env[x][y] != '\n') {

@@ -99,7 +99,7 @@ int check_arg(char **array, data_t *data, int count);
 int check_unsetenv(char **array, data_t *data);
 
 ///cd.c///
-void check_cd(char **array, data_t *data);
+int check_cd(char **array, data_t *data);
 
 ///cd_minus.c///
 int algo_cd_first(data_t *data, int *count);

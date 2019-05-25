@@ -81,10 +81,11 @@ int global_cd(char **array, data_t *data, int *count)
     return (VALID);
 }
 
-void check_cd(char **array, data_t *data)
+int check_cd(char **array, data_t *data)
 {
     char cwd[256];
     static int count = 0;
+    int value = 0;
 
     getcwd(cwd, sizeof(cwd));
     if (data->old_pwd[0] == NULL)
@@ -93,12 +94,13 @@ void check_cd(char **array, data_t *data)
         only_cd(data, count);
     else {
         if (my_strcmp(array[1], "-") == 0)
-            algo_cd_first(data, &count);
+            value = algo_cd_first(data, &count);
         else if (my_strcmp(array[1], "--") == 0 ||
                  my_strcmp(array[1], "~") == 0)
             only_cd(data, count);
         else
-            global_cd(array, data, &count);
+            value = global_cd(array, data, &count);
     }
     count++;
+    return (value);
 }

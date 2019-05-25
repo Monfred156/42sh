@@ -36,8 +36,8 @@ int search_builtin_function(char *str, data_t *data, int *inout_put)
     if (my_strcmp(argv[0], "exit") == 0)
         return(0);
     if (my_strcmp(argv[0], "cd") == 0) {
-        check_cd(argv, data);
-        return (0);
+        value = check_cd(argv, data);
+        return (value);
     }
     value = search_env_function(argv, data);
     dup2(cpy_in, 0);

@@ -45,8 +45,7 @@ char **clean_array(char **array)
     for (int i = 0; array[i]; i++) {
         result[n] = malloc(sizeof(char) * (strlen(array[i]) + 1));
         for (int j = 0; array[i][j]; j++) {
-            if (array[i][0] == '\0') {
-            } else {
+            if (array[i][0] != '\0') {
                 result[n][m] = array[i][j];
                 m++;
             }
@@ -65,10 +64,9 @@ char **parse_string(char *string)
 {
     char **array = malloc(sizeof(char *) * (malloc_nbr_string(string) + 1));
     int *rank = malloc(sizeof(int) * 2);
+
     rank[0] = 0;
     rank[1] = 0;
-
-    printf("%s\n", string);
     array[rank[1]] = malloc(sizeof(char) * (strlen(string) + 1));
     for (int i = 0; string[i]; i++) {
         if (string[i] == '>' || string[i] == '<') {

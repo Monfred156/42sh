@@ -7,6 +7,13 @@
 
 #include "function.h"
 
+char *clean_reduce_str(char *string)
+{
+    string = str_clean(string);
+    string = remove_n(string);
+    return (string);
+}
+
 char **initialisation_old_pwd(void)
 {
     char **old_pwd;
@@ -31,8 +38,7 @@ int main_42sh(char **env)
             my_putstr("42sh> ");
         if (getline(&string, &len, stdin) == -1)
             return 0;
-        string = str_clean(string);
-        string = remove_n(string);
+        string = clean_reduce_str(string);
         if (check_error(string) == 0) {
             array = parse_string(string);
             //array = replace_environnement_var(array, &data);

@@ -35,6 +35,8 @@ SRCS	=		./src/main.c		            	\
 				./src/unsetenv.c                    \
 				./src/cd.c                          \
 				./src/cd_minus.c                    \
+				./src/error_check_arg.c				\
+				./src/recup_str.c					\
 #				./src/and_or_function.c             \
 
 OBJS	=	$(SRCS:.c=.o)

@@ -72,6 +72,11 @@ int string_is_redir(char *string);
 int ambigous_redirect(char **array, int i);
 int check_invalid_command(char **array);
 
+///error_check_arg.c///
+int string_is_separator(char *string);
+int string_is_sep_no_redir(char *string);
+int string_is_redir(char *string);
+
 ///replace_environnement_var.c///
 char **replace_environnement_var(char **array, data_t *data, bool *detec);
 
@@ -118,5 +123,9 @@ int check_cd(char **array, data_t *data);
 int algo_cd_first(data_t *data, int *count);
 char *recup_old_pwd(char **cpy_env);
 int recup_pwd(char **cpy_env);
+
+///recup_str.c///
+char *recup_start_string(char *string);
+char *recup_var(char *var_env);
 
 #endif //PSU_42SH_2018_FUNCTION_H

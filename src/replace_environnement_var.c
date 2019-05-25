@@ -1,37 +1,11 @@
 /*
 ** EPITECH PROJECT, 2019
-** space_in_str
+** replace_environnement_var
 ** File description:
-** space_in_str.c
+** replace_environnement_var.c
 */
 
 #include "function.h"
-
-char *recup_var(char *var_env)
-{
-    char *string = malloc(sizeof(char) * strlen(var_env) + 1);
-    int i = 0;
-    int n = 0;
-
-    for (;var_env[i] != '='; i++);
-    for (i++; var_env[i]; i++) {
-        string[n] = var_env[i];
-        n++;
-    }
-    string[n] = '\0';
-    return string;
-}
-
-char *recup_start_string(char *string)
-{
-    char *result = malloc(sizeof(char) * strlen(string) + 1);
-    int i = 0;
-
-    for (;string[i] != '$'; i++)
-        result[i] = string[i];
-    result[i] = '\0';
-    return result;
-}
 
 char *get_var_env(char *var_env, char *string)
 {
@@ -40,7 +14,7 @@ char *get_var_env(char *var_env, char *string)
     char *result = NULL;
 
     result = my_strcat(start_string, final_var_env);
-    return result;
+    return (result);
 }
 
 char *get_rank_var(char *string, char *var_name, data_t *data)
@@ -73,14 +47,14 @@ char *get_var_name(char *string, data_t *data)
     }
     var_name[n] = '\0';
     string = get_rank_var(string, var_name, data);
-    return string;
+    return (string);
 }
 
 char **replace_environnement_var(char **array, data_t *data, bool *detec)
 {
     char **array_str;
 
-    for (int i = 0; array[i];i++) {
+    for (int i = 0; array[i]; i++) {
         array_str = my_str_to_word_array(array[i], " ");
         for (int j = 0; array_str[j]; j++) {
             if (array_str[j][0] == '$')
@@ -89,5 +63,5 @@ char **replace_environnement_var(char **array, data_t *data, bool *detec)
                 *detec = true;
         }
     }
-    return array;
+    return (array);
 }

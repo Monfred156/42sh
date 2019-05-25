@@ -13,7 +13,8 @@ char *get_file_after_redir(char *string)
     char *str = malloc(sizeof(char) * strlen(string));
     int place = 0;
 
-    for (; string[place] != '>' && string[place] != '<' && string[place]; place++);
+    for (; string[place] != '>' && string[place] != '<' &&
+    string[place]; place++);
     place++;
     if (string[place + 1] == '>' || string[place + 1] == '<')
         place++;

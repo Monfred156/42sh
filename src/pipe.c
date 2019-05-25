@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** pipe
 ** File description:
-** .c
+** pipe.c
 */
 
 #include "function.h"

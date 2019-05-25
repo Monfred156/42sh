@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** space_in_str
+** fill_array_pars
 ** File description:
-** space_in_str.c
+** fill_array_pars.c
 */
 
 #include "function.h"

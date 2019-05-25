@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** cd
 ** File description:
-** .c
+** cd.c
 */
 
 #include "function.h"

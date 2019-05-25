@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** env
 ** File description:
-** .c
+** env.c
 */
 
 #include "function.h"

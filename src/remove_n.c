@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** space_in_str
+** remove_n
 ** File description:
-** space_in_str.c
+** remove_n.c
 */
 
 #include "function.h"

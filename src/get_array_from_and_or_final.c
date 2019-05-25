@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** space_in_str
+** get_array_from_and_or_final
 ** File description:
-** space_in_str.c
+** get_array_from_and_or_final.c
 */
 
 #include "function.h"

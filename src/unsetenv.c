@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** unsetenv
 ** File description:
-** .c
+** unsetenv.c
 */
 
 #include "function.h"

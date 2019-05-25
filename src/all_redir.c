@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** all
+** all_redir
 ** File description:
-** redir.c
+** all_redir.c
 */
 
 #include "function.h"

@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** cd
+** cd_minus
 ** File description:
-** minus.c
+** cd_minus.c
 */
 
 #include "function.h"

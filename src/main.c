@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** main
 ** File description:
-** .c
+** main.c
 */
 
 #include "function.h"

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** history
 ** File description:
-** .c
+** history.c
 */
 
 #include <stddef.h>

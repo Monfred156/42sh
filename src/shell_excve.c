@@ -7,7 +7,7 @@
 
 #include "function.h"
 
-void crash_file(int status, int pid)
+int crash_file(int status, int pid)
 {
     waitpid(pid, &status, 0);
     switch (WTERMSIG(status)) {
@@ -18,11 +18,12 @@ void crash_file(int status, int pid)
             my_putstr_error("Floating exception");
             break;
         default:
-            return;
+            return (status);
     }
     if (WCOREDUMP(status))
         my_putstr_error(" (core dumped)");
     my_putstr_error("\n");
+    return (status);
 }
 
 char *check_all_path(char **path, char *copy, char *str)
@@ -96,7 +97,7 @@ int excve_function(char **argv, data_t *data)
             execve(copy, argv, data->cpy_env);
             exit(0);
         } else
-            crash_file(status, pid);
+            status = crash_file(status, pid);
     } else
         print_error_exec(argv[0], ": Command not found.\n");
     if (status != 0)

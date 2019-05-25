@@ -7,11 +7,13 @@
 
 #include "function.h"
 
-void delete_ligne(int check, data_t *data)
+void delete_lines(int check, data_t *data)
 {
-    for (; data->cpy_env[check + 1] != NULL; check++)
-        data->cpy_env[check] = data->cpy_env[check + 1];
-    data->cpy_env[check] = NULL;
+    if (check >= 0) {
+        for (; data->cpy_env[check + 1] != NULL; check++)
+            data->cpy_env[check] = data->cpy_env[check + 1];
+        data->cpy_env[check] = NULL;
+    }
 }
 
 int check_unsetenv(char **array, data_t *data)
@@ -22,8 +24,7 @@ int check_unsetenv(char **array, data_t *data)
     (array_len(array) != 1)) {
         for (int i = 1; array[i] != NULL; i++) {
             check = check_arg(array, data, i);
-            if (check >= 0)
-                delete_ligne(check, data);
+            delete_lines(check, data);
         }
     } else if (my_strcmp(array[0], "unsetenv") == 0 &&
     (array_len(array) == 1)) {

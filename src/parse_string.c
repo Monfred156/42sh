@@ -7,7 +7,7 @@
 
 #include "function.h"
 
-int malloc_nbr_string(char *string)
+int malloc_nbr_string(char const *string)
 {
     int counter = 0;
 

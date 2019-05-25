@@ -13,7 +13,7 @@ RM	= rm -f
 
 SRCS	=		./src/main.c		            	\
                 ./src/history.c			            \
-    			./src/42sh.c			            \
+    			./src/main_42sh.c			        \
     			./src/parse_string.c	            \
     			./src/str_clean.c		            \
     			./src/remove_n.c		            \
@@ -37,7 +37,6 @@ SRCS	=		./src/main.c		            	\
 				./src/cd_minus.c                    \
 				./src/error_check_arg.c				\
 				./src/recup_str.c					\
-#				./src/and_or_function.c             \
 
 OBJS	=	$(SRCS:.c=.o)
 

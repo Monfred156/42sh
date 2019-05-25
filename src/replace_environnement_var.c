@@ -29,7 +29,7 @@ char *get_rank_var(char *string, char *var_name, data_t *data)
     }
     if (data->cpy_env[i] == NULL) {
         printf("%s: Undefined variable.\n", var_name);
-        return "\0";
+        return ("\0");
     }
     return (get_var_env(data->cpy_env[i], string));
 }
@@ -50,18 +50,24 @@ char *get_var_name(char *string, data_t *data)
     return (string);
 }
 
-char **replace_environnement_var(char **array, data_t *data, bool *detec)
+char **replace_env_change_array(char **array, int i, data_t *data, bool *detec)
 {
     char **array_str;
 
-    for (int i = 0; array[i]; i++) {
-        array_str = my_str_to_word_array(array[i], " ");
-        for (int j = 0; array_str[j]; j++) {
-            if (array_str[j][0] == '$')
-                array[i] = get_var_name(array[i], data);
-            if (array[i][0] == '\0')
-                *detec = true;
-        }
+    array_str = my_str_to_word_array(array[i], " ");
+    for (int j = 0; array_str[j]; j++) {
+        if (array_str[j][0] == '$')
+            array[i] = get_var_name(array[i], data);
+        if (array[i][0] == '\0')
+            *detec = true;
     }
+    my_free(array_str);
+    return (array);
+}
+
+char **replace_environnement_var(char **array, data_t *data, bool *detec)
+{
+    for (int i = 0; array[i]; i++)
+        array = replace_env_change_array(array, i, data, detec);
     return (array);
 }

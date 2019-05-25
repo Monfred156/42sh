@@ -13,6 +13,7 @@
 
 typedef struct s_data {
     char **cpy_env;
+    char **old_pwd;
 } data_t;
 
 #endif //PSU_42SH_2018_STRUCT_H

@@ -98,4 +98,12 @@ int check_arg(char **array, data_t *data, int count);
 ///unsetenv.c///
 int check_unsetenv(char **array, data_t *data);
 
+///cd.c///
+void check_cd(char **array, data_t *data);
+
+///cd_minus.c///
+int algo_cd_first(data_t *data, int *count);
+char *recup_old_pwd(char **cpy_env);
+int recup_pwd(char **cpy_env);
+
 #endif //PSU_42SH_2018_FUNCTION_H

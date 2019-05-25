@@ -7,6 +7,16 @@
 
 #include "function.h"
 
+char **initialisation_old_pwd(void)
+{
+    char **old_pwd;
+
+    old_pwd = malloc(sizeof(char *) * 2);
+    old_pwd[0] = NULL;
+    old_pwd[1] = NULL;
+    return (old_pwd);
+}
+
 int main_42sh(char **env)
 {
     char *string = NULL;
@@ -15,6 +25,7 @@ int main_42sh(char **env)
     data_t data;
 
     get_env(env, &data);
+    data.old_pwd = initialisation_old_pwd();
     while (1) {
         if (isatty(0))
             my_putstr("42sh> ");

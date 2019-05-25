@@ -5,7 +5,7 @@
 ** minus.c
 */
 
-#include "include/my.h"
+#include "function.h"
 
 int recup_pwd(char **cpy_env)
 {
@@ -40,51 +40,56 @@ char *recup_old_pwd(char **cpy_env)
     return (NULL);
 }
 
-char **algo_cd_firstb(char **old_pwd, char **cpy_env, int *count)
+int algo_cd_firstb(data_t *data, int *count)
 {
-    int pwd = recup_pwd(cpy_env);
+    int pwd = recup_pwd(data->cpy_env);
     char cwd[256];
 
-    if (old_pwd[1] != NULL && chdir(old_pwd[1]) == -1) {
-        my_putstr_error(old_pwd[1]);
+    if (data->old_pwd[1] != NULL && chdir(data->old_pwd[1]) == -1) {
+        my_putstr_error(data->old_pwd[1]);
         my_putstr_error(": No such file or directory.\n");
         *count -= 1;
+        return (ERROR);
     } else {
-        old_pwd[0] = recup_old_pwd(cpy_env);
+        data->old_pwd[0] = recup_old_pwd(data->cpy_env);
         if (getcwd(cwd, sizeof(cwd)) != NULL)
-            cpy_env[pwd] = my_strcat("PWD=", cwd);
+            data->cpy_env[pwd] = my_strcat("PWD=", cwd);
     }
-    return (old_pwd);
+    return (VALID);
 }
 
-char **algo_cd_firsta(char **old_pwd, char **cpy_env, int *count)
+int algo_cd_firsta(data_t *data, int *count)
 {
-    int pwd = recup_pwd(cpy_env);
+    int pwd = recup_pwd(data->cpy_env);
     char cwd[256];
 
-    if (chdir(old_pwd[0]) == -1) {
-        my_putstr_error(old_pwd[0]);
+    if (chdir(data->old_pwd[0]) == -1) {
+        my_putstr_error(data->old_pwd[0]);
         my_putstr_error(": No such file or directory.\n");
         *count -= 1;
+        return (ERROR);
     } else {
-        old_pwd[1] = recup_old_pwd(cpy_env);
+        data->old_pwd[1] = recup_old_pwd(data->cpy_env);
         if (getcwd(cwd, sizeof(cwd)) != NULL)
-            cpy_env[pwd] = my_strcat("PWD=", cwd);
+            data->cpy_env[pwd] = my_strcat("PWD=", cwd);
     }
-    return (old_pwd);
+    return (VALID);
 }
 
-char **algo_cd_first(char **old_pwd, char **cpy_env, int *count)
+int algo_cd_first(data_t *data, int *count)
 {
-    if (old_pwd[0] == NULL) {
+    if (data->old_pwd[0] == NULL) {
         my_putstr_error(": No such file or directory.\n");
         *count -= 1;
+        return (ERROR);
     } else {
-        if (*count % 2 == 0)
-            old_pwd = algo_cd_firsta(old_pwd, cpy_env, count);
-        else {
-            old_pwd = algo_cd_firstb(old_pwd, cpy_env, count);
+        if (*count % 2 == 0) {
+            if (algo_cd_firsta(data, count) == ERROR)
+                return (ERROR);
+        } else {
+            if (algo_cd_firstb(data, count) == ERROR)
+                return (ERROR);
         }
     }
-    return (old_pwd);
+    return (VALID);
 }

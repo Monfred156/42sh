@@ -8,8 +8,6 @@
 #ifndef PSU_42SH_2018_FUNCTION_H
 #define PSU_42SH_2018_FUNCTION_H
 
-#include "my.h"
-#include "struct.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
@@ -23,6 +21,8 @@
 #include <limits.h>
 #include <signal.h>
 #include <stdbool.h>
+#include "my.h"
+#include "struct.h"
 
 ///history.c///
 char **get_history(char **history, char *str);
@@ -60,9 +60,7 @@ int fill_array_after_separa(const char *string, char **array, int *rank, int i);
 int fill_array_after_redir(const char *string, char **array, int *rank, int i);
 
 ///exit.c///
-int check_exit_command_exist(char **commands);
-int check_exit_value(char *commands);
-int look_around_exit(char **commands);
+int check_exit(data_t *data, char **array);
 
 ///error_handling.c///
 int check_error(char *string);
@@ -79,11 +77,6 @@ int string_is_redir(char *string);
 
 ///replace_environnement_var.c///
 char **replace_environnement_var(char **array, data_t *data, bool *detec);
-
-
-///and_or_function.c///
-int and_function(char *str, char **env, int result);
-int or_function(char *str, char **env, int result);
 
 ///free.c///
 void free_char_double_star(char **array);
@@ -127,5 +120,8 @@ int recup_pwd(char **cpy_env);
 ///recup_str.c///
 char *recup_start_string(char *string);
 char *recup_var(char *var_env);
+
+///init.c///
+void init_struct(data_t *data);
 
 #endif //PSU_42SH_2018_FUNCTION_H

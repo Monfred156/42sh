@@ -14,16 +14,6 @@ char *clean_reduce_str(char *string)
     return (string);
 }
 
-char **initialisation_old_pwd(void)
-{
-    char **old_pwd;
-
-    old_pwd = malloc(sizeof(char *) * 2);
-    old_pwd[0] = NULL;
-    old_pwd[1] = NULL;
-    return (old_pwd);
-}
-
 int main_42sh(char **env)
 {
     char *string = NULL;
@@ -32,8 +22,8 @@ int main_42sh(char **env)
     data_t data;
 
     get_env(env, &data);
-    data.old_pwd = initialisation_old_pwd();
-    while (1) {
+    init_struct(&data);
+    while (data.finish == false) {
         if (isatty(0))
             my_putstr("42sh> ");
         if (getline(&string, &len, stdin) == -1)
@@ -45,4 +35,5 @@ int main_42sh(char **env)
         }
         string = NULL;
     }
+    return (data.to_return);
 }

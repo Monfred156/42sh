@@ -37,11 +37,12 @@ SRCS	=		./src/main.c		            	\
 				./src/cd_minus.c                    \
 				./src/error_check_arg.c				\
 				./src/recup_str.c					\
+				./src/init.c						\
 
 OBJS	=	$(SRCS:.c=.o)
 
 CFLAGS = -I ./include/
-CFLAGS += -W -Wall -Wextra -Wno-unused -g
+CFLAGS += -W -Wall -Wextra -Wno-unused
 
 all: $(NAME)
 

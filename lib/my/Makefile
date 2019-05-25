@@ -26,6 +26,7 @@ SRC	=	my_putstr.c				\
 		cpy_array.c				\
 		print_error_exec.c		\
 		detect_exec.c			\
+		my_str_isnum.c			\
 
 OBJ	=	$(SRC:.c=.o)
 

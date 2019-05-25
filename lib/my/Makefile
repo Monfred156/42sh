@@ -20,10 +20,12 @@ SRC	=	my_putstr.c				\
 		add_chars_before_str.c	\
 		my_free.c				\
 		my_str_count.c			\
-		my_strncmp.c            \
-		my_strdup.c		        \
-		my_strcat.c             \
-		cpy_array.c             \
+		my_strncmp.c			\
+		my_strdup.c				\
+		my_strcat.c				\
+		cpy_array.c				\
+		print_error_exec.c		\
+		detect_exec.c			\
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -37,5 +37,7 @@ int my_strncmp(char const *, char const *, int);
 char *my_strdup(char *str);
 char *my_strcat(char *str1, char const *str2);
 char **cpy_array(char **array);
+void print_error_exec(char *str, char *error);
+int detect_exec(char *str);
 
 #endif

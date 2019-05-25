@@ -7,14 +7,9 @@
 
 #include "function.h"
 
-void print_command_not_found(char *str)
+void crash_file(int status, int pid)
 {
-    my_putstr_error(str);
-    my_putstr_error(": Command not found.\n");
-}
-
-void crash_file(int status)
-{
+    waitpid(pid, &status, 0);
     switch (WTERMSIG(status)) {
         case SIGSEGV:
             my_putstr_error("Segmentation fault");
@@ -42,7 +37,7 @@ char *check_all_path(char **path, char *copy, char *str)
         copy = add_chars_before_str(copy, path[nb]);
     }
     if (access(copy, X_OK) != 0 || my_str_count(str, "/") > 0 ||
-    my_str_count(str, ".") == 1) {
+    detect_exec(str) == 1) {
         free(copy);
         copy = my_str_copy(str);
     }
@@ -70,24 +65,40 @@ char *access_path(char *str, data_t *data)
     return (copy);
 }
 
+int search_file(char *str)
+{
+    struct stat file_stat;
+
+    if (detect_exec(str) == 0)
+        return (VALID);
+    if (stat(str, &file_stat) == -1)
+        return (VALID);
+    if ((S_IFMT & file_stat.st_mode) != S_IFREG) {
+        print_error_exec(str, ": Permission denied.\n");
+        return (ERROR);
+    }
+    return (VALID);
+}
+
 int excve_function(char **argv, data_t *data)
 {
     char *copy = access_path(argv[0], data);
     int pid;
     int status = 1;
 
+    if (search_file(argv[0]) == ERROR)
+        return (ERROR);
     if (access(copy, X_OK) == 0) {
         pid = fork();
         if (pid < 0)
-            exit (84);
-        if (pid == 0)
+            exit(84);
+        if (pid == 0) {
             execve(copy, argv, data->cpy_env);
-        else {
-            waitpid(pid, &status, 0);
-            crash_file(status);
-        }
+            exit(0);
+        } else
+            crash_file(status, pid);
     } else
-        print_command_not_found(argv[0]);
+        print_error_exec(argv[0], ": Command not found.\n");
     if (status != 0)
         return (ERROR);
     return (VALID);

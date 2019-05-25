@@ -30,6 +30,10 @@ void print_history(char **history);
 
 ///str_clean.c///
 char *str_clean(char *str);
+char *str_and_or(char *copy, char *str, int *nb);
+char *str_simple_char(char *copy, char *str, int *nb);
+char *del_to_much_space(char *str);
+char *str_direction(char *copy, char *str, int *nb);
 
 ///42sh.c///
 int main_42sh(char **env);
@@ -39,6 +43,8 @@ void get_env(char **env, data_t *data);
 
 ///parse_string.c///
 char **parse_string(char *string);
+char **clean_array(char **array);
+int check_separator(char charca);
 
 ///remove_n.c///
 char *remove_n(char *string);
@@ -60,9 +66,15 @@ int look_around_exit(char **commands);
 
 ///error_handling.c///
 int check_error(char *string);
+int string_is_sep_no_redir(char *string);
+int string_is_separator(char *string);
+int string_is_redir(char *string);
+int ambigous_redirect(char **array, int i);
+int check_invalid_command(char **array);
 
 ///replace_environnement_var.c///
-char **replace_environnement_var(char **array, data_t *data);
+char **replace_environnement_var(char **array, data_t *data, bool *detec);
+
 
 ///and_or_function.c///
 int and_function(char *str, char **env, int result);
@@ -87,6 +99,7 @@ void last_pipe(int *inout_put, char **array);
 
 ///create_argv.c///
 char **create_argv(char *str);
+int search_param(char *str);
 
 ///env.c///
 void print_env(char **cpy_env);

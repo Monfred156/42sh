@@ -9,7 +9,7 @@
 
 char *recup_var(char *var_env)
 {
-    char *string = malloc(sizeof(char) * strlen(var_env));
+    char *string = malloc(sizeof(char) * strlen(var_env) + 1);
     int i = 0;
     int n = 0;
 
@@ -24,7 +24,7 @@ char *recup_var(char *var_env)
 
 char *recup_start_string(char *string)
 {
-    char *result = malloc(sizeof(char) * strlen(string));
+    char *result = malloc(sizeof(char) * strlen(string) + 1);
     int i = 0;
 
     for (;string[i] != '$'; i++)
@@ -53,8 +53,10 @@ char *get_rank_var(char *string, char *var_name, data_t *data)
         if (strcmp(env_array[0], var_name) == 0)
             break;
     }
-    if (data->cpy_env[i] == NULL)
-        return string;
+    if (data->cpy_env[i] == NULL) {
+        printf("%s: Undefined variable.\n", var_name);
+        return "\0";
+    }
     return (get_var_env(data->cpy_env[i], string));
 }
 
@@ -74,7 +76,7 @@ char *get_var_name(char *string, data_t *data)
     return string;
 }
 
-char **replace_environnement_var(char **array, data_t *data)
+char **replace_environnement_var(char **array, data_t *data, bool *detec)
 {
     char **array_str;
 
@@ -83,6 +85,8 @@ char **replace_environnement_var(char **array, data_t *data)
         for (int j = 0; array_str[j]; j++) {
             if (array_str[j][0] == '$')
                 array[i] = get_var_name(array[i], data);
+            if (array[i][0] == '\0')
+                *detec = true;
         }
     }
     return array;

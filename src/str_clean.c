@@ -5,8 +5,7 @@
 ** space_in_str.c
 */
 
-#include <stdlib.h>
-#include "my.h"
+#include "function.h"
 
 char *del_to_much_space(char *str)
 {

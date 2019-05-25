@@ -5,6 +5,7 @@
 ** get_array_from_and_or_final.c
 */
 
+#include <stdlib.h>
 #include "function.h"
 
 bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put)

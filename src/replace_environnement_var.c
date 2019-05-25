@@ -5,6 +5,9 @@
 ** replace_environnement_var.c
 */
 
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "function.h"
 
 char *get_var_env(char *var_env, char *string)

@@ -5,6 +5,9 @@
 ** cd.c
 */
 
+#include <zconf.h>
+#include <stdlib.h>
+#include <sys/stat.h>
 #include "function.h"
 
 char *recup_home(char **cpy_env)

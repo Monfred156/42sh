@@ -5,6 +5,8 @@
 ** recup_str.c
 */
 
+#include <stdlib.h>
+#include <string.h>
 #include "function.h"
 
 char *recup_var(char *var_env)

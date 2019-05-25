@@ -5,7 +5,6 @@
 ** history.c
 */
 
-#include <stddef.h>
 #include <stdlib.h>
 #include "function.h"
 

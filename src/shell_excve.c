@@ -5,6 +5,12 @@
 ** shell_excve.c
 */
 
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <wait.h>
 #include "function.h"
 
 int crash_file(int status, int pid)

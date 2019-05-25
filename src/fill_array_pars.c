@@ -5,6 +5,8 @@
 ** fill_array_pars.c
 */
 
+#include <stdlib.h>
+#include <string.h>
 #include "function.h"
 
 int fill_array_after_separa(const char *string, char **array, int *rank, int i)

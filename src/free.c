@@ -5,7 +5,6 @@
 ** ncauet
 */
 
-#include <unistd.h>
 #include <stdlib.h>
 
 void free_char_double_star(char **array)

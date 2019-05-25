@@ -8,19 +8,6 @@
 #ifndef PSU_42SH_2018_FUNCTION_H
 #define PSU_42SH_2018_FUNCTION_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <unistd.h>
-#include <assert.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <limits.h>
-#include <signal.h>
-#include <stdbool.h>
 #include "my.h"
 #include "struct.h"
 

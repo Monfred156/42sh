@@ -5,6 +5,7 @@
 ** unsetenv.c
 */
 
+#include <stdlib.h>
 #include "function.h"
 
 void delete_lines(int check, data_t *data)

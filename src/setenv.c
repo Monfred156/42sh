@@ -5,6 +5,7 @@
 ** .c
 */
 
+#include <stdlib.h>
 #include "function.h"
 
 int error_setenv(char **array)

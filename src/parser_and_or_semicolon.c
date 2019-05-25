@@ -5,6 +5,7 @@
 ** parser_and_or_semicolumn
 */
 
+#include <string.h>
 #include <stdlib.h>
 #include "function.h"
 

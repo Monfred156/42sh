@@ -5,6 +5,7 @@
 ** search_function.c
 */
 
+#include <zconf.h>
 #include "function.h"
 
 int search_env_function(char **argv, data_t *data)

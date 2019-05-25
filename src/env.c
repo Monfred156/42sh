@@ -5,6 +5,7 @@
 ** env.c
 */
 
+#include <stdlib.h>
 #include "function.h"
 
 void print_env(char **cpy_env)

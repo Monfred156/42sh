@@ -5,6 +5,7 @@
 ** error_check_string.c
 */
 
+#include <string.h>
 #include "function.h"
 
 int string_is_redir(char *string)

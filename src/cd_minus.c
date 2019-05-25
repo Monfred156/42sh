@@ -5,6 +5,8 @@
 ** cd_minus.c
 */
 
+#include <zconf.h>
+#include <stdlib.h>
 #include "function.h"
 
 int recup_pwd(char **cpy_env)

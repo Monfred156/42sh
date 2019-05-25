@@ -5,6 +5,7 @@
 ** space_in_str.c
 */
 
+#include <string.h>
 #include "function.h"
 
 int ambigous_redirect(char **array, int i)

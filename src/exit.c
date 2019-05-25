@@ -5,6 +5,7 @@
 ** exit
 */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include "my.h"
 #include "function.h"

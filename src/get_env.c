@@ -5,10 +5,7 @@
 ** get_env.c
 */
 
-#include <unistd.h>
 #include <stdlib.h>
-#include <struct.h>
-#include <string.h>
 #include "function.h"
 
 void free_env(char **env)

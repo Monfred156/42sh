@@ -5,6 +5,9 @@
 ** all_redir.c
 */
 
+#include <fcntl.h>
+#include <string.h>
+#include <stdlib.h>
 #include "function.h"
 
 char *get_file_after_redir(char *string)

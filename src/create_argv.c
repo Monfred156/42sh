@@ -5,6 +5,7 @@
 ** create_argv.c
 */
 
+#include <stdlib.h>
 #include "function.h"
 
 int search_param(char *str)

@@ -5,6 +5,9 @@
 ** space_in_str.c
 */
 
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include "function.h"
 
 char *clean_reduce_str(char *string)

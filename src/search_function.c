@@ -11,7 +11,7 @@ int search_env_function(char **argv, data_t *data)
 {
     if (my_strcmp(argv[0], "env") == 0) {
         print_env(data->cpy_env);
-        return (0);
+        return (VALID);
     }
     if (my_strcmp(argv[0], "setenv") == 0) {
         check_setenv(argv, data);

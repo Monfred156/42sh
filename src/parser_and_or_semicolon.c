@@ -38,7 +38,6 @@ char **get_next_tab(int *i, char **cmd_parsed)
 
 void move_to_next_operand(int result, char **tab, int *i)
 {
-    printf("%s\nresult = %d\n", tab[(*i)], result);
     if (tab[(*i)] && strcmp(tab[(*i)], "&&") == 0) {
         if (result == VALID)
             return;

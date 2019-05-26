@@ -50,7 +50,7 @@ int delete_quote(char **argv)
 
     for (nb1 = 1; result == VALID && argv[nb1] != NULL; nb1++)
         for (nb2 = 0; result == VALID && argv[nb1][nb2] != '\0'; nb2++)
-            if_char_quote(argv[nb1], &nb2);
+            result = if_char_quote(argv[nb1], &nb2);
     return (result);
 }
 

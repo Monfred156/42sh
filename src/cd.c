@@ -99,7 +99,7 @@ int check_cd(char **array, data_t *data)
         if (my_strcmp(array[1], "-") == 0)
             value = algo_cd_first(data, &count);
         else if (my_strcmp(array[1], "--") == 0 ||
-                 my_strcmp(array[1], "~") == 0)
+        my_strcmp(array[1], "~") == 0)
             only_cd(data, count);
         else
             value = global_cd(array, data, &count);

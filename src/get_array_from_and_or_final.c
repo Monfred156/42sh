@@ -12,14 +12,13 @@
 #include <sys/wait.h>
 #include "function.h"
 
-bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put,
-    int *fd)
+bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put)
 {
     bool exec = true;
 
     for (int i = *nb; array[i] && array[i][0] != '|'; i++) {
         if (array[i][0] == '<' || array[i][0] == '>')
-            exec = check_redir_and_path(array, inout_put, i, fd);
+            exec = check_redir_and_path(array, inout_put, i);
     }
     return (exec);
 }
@@ -63,10 +62,9 @@ int get_array_from_and_or_final(data_t *data, char **array)
     int value = 0;
     int inout_put[2] = {0, 1};
     int pipefd[2] = {0, 1};
-    int fd[2] = {0, 1};
 
     for (int i = 0; array[i]; i++) {
-        exec = check_redir_until_end_or_pipe(array, &i, inout_put, fd);
+        exec = check_redir_until_end_or_pipe(array, &i, inout_put);
         if (exec == false)
             break;
         pipe = check_pipe(array, inout_put, i, pipefd);

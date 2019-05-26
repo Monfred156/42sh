@@ -76,10 +76,11 @@ void redir_right(char **array, int *inout, int i)
         inout[1] = 1;
 }
 
-void redir_double_left(char **array, int *inout, int i, char *str, int *fdpipe)
+void redir_double_left(char **array, int *inout, int i, char *str)
 {
     char **double_redir = get_redir_double_left(str);
     int cpy_out = dup(1);
+    int fdpipe[2] = {0, 1};
 
     if (pipe(fdpipe) != -1) {
         dup2(fdpipe[1], 1);
@@ -91,14 +92,14 @@ void redir_double_left(char **array, int *inout, int i, char *str, int *fdpipe)
     }
 }
 
-bool redir_left(char **array, int *inout, int i, int *fdpipe)
+bool redir_left(char **array, int *inout, int i)
 {
     int fd = 0;
     int continu = 0;
     char *file = get_file_after_redir(array[i]);
 
     if (array[i][1] == '<')
-        redir_double_left(array, inout, i, file, fdpipe);
+        redir_double_left(array, inout, i, file);
     else {
         fd = open(file, O_RDONLY);
         if (fd != -1)
@@ -118,10 +119,10 @@ bool redir_left(char **array, int *inout, int i, int *fdpipe)
     return (true);
 }
 
-bool check_redir_and_path(char **array, int *inout, int i, int *fd)
+bool check_redir_and_path(char **array, int *inout, int i)
 {
     if (array[i][0] == '<') {
-        if (redir_left(array, inout, i, fd) == false)
+        if (redir_left(array, inout, i) == false)
             return (false);
     } else if (array[i][0] == '>')
         redir_right(array, inout, i);

@@ -33,7 +33,7 @@ bool check_pipe(char **array, int *inout_put, int i, int *pipefd)
     if (i > 0 && array[i - 1][0] == '|' &&
     (array[i + 1] == NULL || array[i + 1][0] != '|')) {
         last_pipe(inout_put, pipefd);
-        return true;
+        return false;
     }
     if (((i > 0 && array[i - 1][0] != '|') || i == 0) && array[i+1] != NULL &&
     array[i + 1][0] == '|') {

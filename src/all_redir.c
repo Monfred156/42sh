@@ -21,6 +21,8 @@ char **get_redir_double_left(char *final)
     result[0] = NULL;
     for (int nb = 0; my_strcmp(final, str) != 0; nb++) {
         my_putstr("? ");
+        free(str);
+        str = NULL;
         if (getline(&str, &len, stdin) == -1)
             break;
         str = remove_n(str);

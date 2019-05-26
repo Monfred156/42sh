@@ -10,19 +10,22 @@
 
 int search_env_function(char **argv, data_t *data)
 {
-    if (my_strcmp(argv[0], "env") == 0) {
-        print_env(data->cpy_env);
-        return (VALID);
-    }
-    if (my_strcmp(argv[0], "setenv") == 0) {
-        check_setenv(argv, data);
-        return (0);
-    }
-    if (my_strcmp(argv[0], "unsetenv") == 0) {
-        check_unsetenv(argv, data);
-        return (0);
-    }
+    if (my_strcmp(argv[0], "env") == 0)
+        return (print_env(data->cpy_env));
+    if (my_strcmp(argv[0], "setenv") == 0)
+        return (check_setenv(argv, data));
+    if (my_strcmp(argv[0], "unsetenv") == 0)
+        return (check_unsetenv(argv, data));
     return (excve_function(argv, data));
+}
+
+int search_cd_and_exit_func(char **argv, data_t *data)
+{
+    if (my_strcmp(argv[0], "exit") == 0)
+        return (check_exit(data, argv));
+    if (my_strcmp(argv[0], "cd") == 0)
+        return (check_cd(argv, data));
+    return (search_env_function(argv, data));
 }
 
 int search_builtin_function(char *str, data_t *data, int *inout_put)
@@ -34,15 +37,11 @@ int search_builtin_function(char *str, data_t *data, int *inout_put)
 
     dup2(inout_put[0], 0);
     dup2(inout_put[1], 1);
-    if (my_strcmp(argv[0], "exit") == 0) {
-        check_exit(data, argv);
-        return (0);
-    }
-    if (my_strcmp(argv[0], "cd") == 0) {
-        value = check_cd(argv, data);
-        return (value);
-    }
-    value = search_env_function(argv, data);
+
+    if (my_strcmp(argv[0], "echo") == 0)
+        value = echo_func(argv);
+    else
+        value = search_cd_and_exit_func(argv, data);
     dup2(cpy_in, 0);
     dup2(cpy_out, 1);
     return (value);

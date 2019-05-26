@@ -38,6 +38,7 @@ SRCS	=		./src/main.c		            	\
 				./src/error_check_arg.c				\
 				./src/recup_str.c					\
 				./src/init.c						\
+				./src/echo.c						\
 
 OBJS	=	$(SRCS:.c=.o)
 

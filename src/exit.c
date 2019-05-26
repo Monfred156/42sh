@@ -23,9 +23,7 @@ int check_exit(data_t *data, char **array)
         }
         data->finish = true;
         data->to_return = atoi(array[1]);
-        return (VALID);
-    } else {
+    } else
         data->finish = true;
-        return (VALID);
-    }
+    return (VALID);
 }

@@ -87,7 +87,7 @@ char **create_argv(char *str);
 int search_param(char *str);
 
 ///env.c///
-void print_env(char **cpy_env);
+int print_env(char **cpy_env);
 
 ///setenv.c///
 int check_setenv(char **array, data_t *data);
@@ -110,5 +110,8 @@ char *recup_var(char *var_env);
 
 ///init.c///
 void init_struct(data_t *data);
+
+///echo.c///
+int echo_func(char **argv);
 
 #endif //PSU_42SH_2018_FUNCTION_H

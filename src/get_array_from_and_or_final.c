@@ -26,23 +26,24 @@ bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put, int *f
     return (exec);
 }
 
-void check_pipe(char **array, int *inout_put, int i, bool *pipe, int *pipefd)
+bool check_pipe(char **array, int *inout_put, int i, int *pipefd)
 {
     if (i > 0 && array[i - 1][0] == '|' && array[i + 1] != NULL &&
     array[i + 1][0] == '|') {
         middle_pipe(inout_put, pipefd);
-        *pipe = true;
+        return true;
     }
     if (i > 0 && array[i - 1][0] == '|' &&
     (array[i + 1] == NULL || array[i + 1][0] != '|')) {
         last_pipe(inout_put, pipefd);
-        *pipe = true;
+        return true;
     }
     if (((i > 0 && array[i - 1][0] != '|') || i == 0) && array[i+1] != NULL &&
     array[i + 1][0] == '|') {
         first_pipe(inout_put, pipefd);
-        *pipe = true;
+        return true;
     }
+    return false;
 }
 
 int get_array_from_and_or_final(data_t *data, char **array)
@@ -58,7 +59,7 @@ int get_array_from_and_or_final(data_t *data, char **array)
         exec = check_redir_until_end_or_pipe(array, &i, inout_put, fd);
         if (exec == false)
             break;
-        check_pipe(array, inout_put, i, &pipe, pipefd);
+        pipe = check_pipe(array, inout_put, i, pipefd);
         if (i >= 0)
             value = search_builtin_function(array[i], data, inout_put);
         if (pipe == true)

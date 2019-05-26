@@ -7,6 +7,7 @@
 
 #include <string.h>
 #include <errno.h>
+#include <unistd.h>
 #include "function.h"
 
 int ambigous_redirect(char **array, int i)
@@ -57,10 +58,10 @@ int check_error(char *string)
     return (0);
 }
 
-void display_execve_error(char *cmd)
+void exec_execve(char **argv, char *str, char *cmd, data_t *data)
 {
-    if (errno == ENOEXEC) {
-        my_putstr_error(cmd);
-        my_putstr_error(": Exec format error. Wrong Architecture\n");
-    }
+    if (execve(str, argv, data->cpy_env) == -1)
+        if (errno == ENOEXEC)
+            print_error_exec(cmd,
+            ": Exec format error. Wrong Architecture.\n");
 }

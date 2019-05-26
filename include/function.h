@@ -53,7 +53,7 @@ int check_exit(data_t *data, char **array);
 int check_error(char *string);
 int ambigous_redirect(char **array, int i);
 int check_invalid_command(char **array);
-void display_execve_error(char *cmd);
+void exec_execve(char **argv, char *str, char *cmd, data_t *data);
 
 ///error_check_arg.c///
 int string_is_separator(char *string);

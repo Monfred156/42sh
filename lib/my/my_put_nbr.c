@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_put_nbr.c
+** my_put_nbr
 ** File description:
-** oui
+** my_put_nbr.c
 */
 
 #include "my.h"

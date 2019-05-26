@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_strncmp.c
+** my_strncmp
 ** File description:
-** c
+** my_strncmp.c
 */
 
 int my_strncmp(char const *s1, char const *s2, int n)

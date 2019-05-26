@@ -10,11 +10,10 @@
 
 void delete_lines(int check, data_t *data)
 {
-    if (check >= 0) {
+    if (check >= 0)
         for (; data->cpy_env[check + 1] != NULL; check++)
             data->cpy_env[check] = data->cpy_env[check + 1];
         data->cpy_env[check] = NULL;
-    }
 }
 
 int check_unsetenv(char **array, data_t *data)

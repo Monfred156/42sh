@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** my_putstr
 ** File description:
-** my_putstr
+** my_putstr.c
 */
 
 #include <unistd.h>

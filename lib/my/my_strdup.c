@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** str
+** my_str_dup
 ** File description:
-** dup
+** my_str_dup.c
 */
 
 #include "my.h"
@@ -12,7 +12,7 @@
 char *my_strdup(char *str)
 {
     int size = my_strlen(str);
-    char *dup = malloc(sizeof(char) * size + 1);
+    char *dup = check_malloc_char(size + 1);
 
     for (int i = 0; str[i]; i++)
         dup[i] = str[i];

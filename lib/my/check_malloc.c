@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** check_malloc
 ** File description:
-** .c
+** check_malloc.c
 */
 
 #include <stdlib.h>

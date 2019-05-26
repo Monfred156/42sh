@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_stradd
+** add_chars_before_str
 ** File description:
 ** ajoute n charactere devant un char *
 */

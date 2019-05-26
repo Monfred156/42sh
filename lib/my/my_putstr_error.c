@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_putstr
+** my_putstr_error
 ** File description:
-** error.c
+** my_putstr_error.c
 */
 
 #include <unistd.h>

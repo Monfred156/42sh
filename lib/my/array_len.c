@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** array
+** array_len
 ** File description:
-** len.c
+** array_len.c
 */
 
 int array_len(char **array)

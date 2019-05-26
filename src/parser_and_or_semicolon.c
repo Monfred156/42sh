@@ -49,11 +49,9 @@ void move_to_next_operand(int result, char **tab, int *i)
     } else if (tab[(*i)] && strcmp(tab[(*i)], "||") == 0) {
         if (result == VALID) {
             (*i)++;
-            while (tab[(*i)] && strcmp(tab[(*i)], "&&") != 0 &&
-                strcmp(tab[(*i)], ";") != 0)
+            while (tab[(*i)] && strcmp(tab[(*i)], ";") != 0)
                 (*i)++;
-        }
-        else if (result == ERROR)
+        } else if (result == ERROR)
             return;
     }
 }

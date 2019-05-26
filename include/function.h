@@ -40,7 +40,7 @@ char *remove_n(char *string);
 int excve_function(char **argv, data_t *data);
 
 ///search_function.c///
-int search_builtin_function(char *str, data_t *data, int *inout_put, bool pipe);
+int search_builtin_function(char *str, data_t *data, int *inout_put);
 
 ///file_array_pars.c///
 int fill_array_after_separa(const char *string, char **array, int *rank, int i);
@@ -51,9 +51,6 @@ int check_exit(data_t *data, char **array);
 
 ///error_handling.c///
 int check_error(char *string);
-int string_is_sep_no_redir(char *string);
-int string_is_separator(char *string);
-int string_is_redir(char *string);
 int ambigous_redirect(char **array, int i);
 int check_invalid_command(char **array);
 void display_execve_error(char *cmd);
@@ -79,9 +76,9 @@ void get_str(char **cmd_parsed, data_t *data);
 int get_array_from_and_or_final(data_t *data, char **array);
 
 ///pipe.c///
-void first_pipe(int *inout_put, char **array);
-void middle_pipe(int *inout_put, char **array);
-void last_pipe(int *inout_put, char **array);
+void first_pipe(int *inout_put, int *pipefd);
+void middle_pipe(int *inout_put, int *pipefd);
+void last_pipe(int *inout_put, int *pipefd);
 
 ///create_argv.c///
 char **create_argv(char *str);

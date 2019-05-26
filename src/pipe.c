@@ -5,25 +5,28 @@
 ** pipe.c
 */
 
+#include <zconf.h>
 #include "function.h"
 
-void first_pipe(int *inout_put, char **array)
+void first_pipe(int *inout_put, int *pipefd)
 {
-/*    close(gb->pipe.pipefd[0]);
-    dup2(gb->pipe.pipefd[1], 1);
-//    close(gb->pipe.pipefd[1]);*/
+    pipe(pipefd);
+
+    inout_put[1] = pipefd[1];
 }
 
-void middle_pipe(int *inout_put, char **array)
+void middle_pipe(int *inout_put, int *pipefd)
 {
-/*    dup2(save_pipefd, 0);
-    dup2(pipefd[1], 1);
-    close(pipefd[0]);*/
-}
+    int save = pipefd[0];
 
-void last_pipe(int *inout_put, char **array)
-{
-/*    dup2(pipefd[0], 0);
     close(pipefd[1]);
-    close(pipefd[0]);*/
+    pipe(pipefd);
+    inout_put[0] = save;
+    inout_put[1] = pipefd[1];
+}
+
+void last_pipe(int *inout_put, int *pipefd)
+{
+    close(pipefd[1]);
+    inout_put[0] = pipefd[0];
 }

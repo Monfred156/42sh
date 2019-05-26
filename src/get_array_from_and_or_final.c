@@ -12,13 +12,13 @@
 #include <sys/wait.h>
 #include "function.h"
 
-bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put)
+bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put, int *fd)
 {
     bool exec = true;
 
     for (int i = *nb; array[i] && array[i][0] != '|'; i++) {
         if (array[i][0] == '<' || array[i][0] == '>') {
-            exec = check_redir_and_path(array, inout_put, i);
+            exec = check_redir_and_path(array, inout_put, i, fd);
             *nb -= 1;
         }
     }
@@ -50,17 +50,17 @@ int get_array_from_and_or_final(data_t *data, char **array)
     bool pipe = false;
     int value = 0;
     int inout_put[2] = {0, 1};
-    int *pipefd = check_malloc_int(2);
-    pipefd[0] = 0;
-    pipefd[1] = 1;
+    int pipefd[2] = {0, 1};
+    int fd[2] = {0, 1};
 
     for (int i = 0; array[i]; i++) {
-        exec = check_redir_until_end_or_pipe(array, &i, inout_put);
+        exec = check_redir_until_end_or_pipe(array, &i, inout_put, fd);
         if (exec == false)
             break;
         check_pipe(array, inout_put, i, &pipe, pipefd);
         if (i >= 0)
             value = search_builtin_function(array[i], data, inout_put);
+//        close(fd[0]);
         if (pipe == true)
             i++;
         pipe = false;

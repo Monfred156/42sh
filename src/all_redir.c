@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <stdlib.h>
+#include <zconf.h>
 #include "function.h"
 
 char **get_redir_double_left(char *final)
@@ -29,9 +30,6 @@ char **get_redir_double_left(char *final)
         result = my_realloc_array(result, 1);
         result[nb] = my_str_copy(str);
     }
-    for (int nb = 0; result[nb] != NULL; nb++) {
-        printf("%s\n", result[nb]);
-    }
     return (result);
 }
 
@@ -44,7 +42,7 @@ char *get_file_after_redir(char *string)
     for (; string[place] != '>' && string[place] != '<' &&
     string[place]; place++);
     place++;
-    if (string[place + 1] == '>' || string[place + 1] == '<')
+    if (string[place] == '>' || string[place] == '<')
         place++;
     place++;
     for (; string[place]; place++) {
@@ -73,24 +71,39 @@ void redir_right(char **array, int *inout, int i)
         inout[1] = 1;
 }
 
+void redir_double_left(char **array, int *inout, int i, char *str, int *fdpipe)
+{
+    char **double_redir = get_redir_double_left(str);
+    int cpy_out = dup(1);
 
+    if (pipe(fdpipe) != -1) {
+        dup2(fdpipe[1], 1);
+        for (int j = 0; double_redir[j]; j++)
+            my_putstr(double_redir[j]);
+        close(fdpipe[1]);
+        inout[0] = fdpipe[0];
+        dup2(cpy_out, 1);
+    }
+}
 
-bool redir_left(char **array, int *inout, int i)
+bool redir_left(char **array, int *inout, int i, int *fdpipe)
 {
     int fd = 0;
     int continu = 0;
     char *file = get_file_after_redir(array[i]);
 
     if (array[i][1] == '<')
-
-    fd = open(file, O_RDONLY);
-    if (fd != -1)
-        inout[0] = fd;
+        redir_double_left(array, inout, i, file, fdpipe);
     else {
-        inout[0] = 0;
-        my_putstr_error(file);
-        my_putstr_error(": No such file or directory.\n");
-        continu = 1;
+        fd = open(file, O_RDONLY);
+        if (fd != -1)
+            inout[0] = fd;
+        else {
+            inout[0] = 0;
+            my_putstr_error(file);
+            my_putstr_error(": No such file or directory.\n");
+            continu = 1;
+        }
     }
     for (; array[i + 1]; i++)
         array[i] = array[i + 1];
@@ -101,10 +114,10 @@ bool redir_left(char **array, int *inout, int i)
         return (true);
 }
 
-bool check_redir_and_path(char **array, int *inout, int i)
+bool check_redir_and_path(char **array, int *inout, int i, int *fd)
 {
     if (array[i][0] == '<') {
-        if (redir_left(array, inout, i) == false)
+        if (redir_left(array, inout, i, fd) == false)
             return (false);
     } else if (array[i][0] == '>')
         redir_right(array, inout, i);

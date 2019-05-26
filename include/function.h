@@ -67,7 +67,7 @@ char **replace_environnement_var(char **array, data_t *data, bool *detec);
 void free_char_double_star(char **array);
 
 ///all_redir.c///
-bool check_redir_and_path(char **array, int *inout, int i);
+bool check_redir_and_path(char **array, int *inout, int i, int *fd);
 
 ///parser_and_or_semicolon.c///
 void get_str(char **cmd_parsed, data_t *data);

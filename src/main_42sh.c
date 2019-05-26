@@ -29,10 +29,8 @@ int main_42sh(char **env)
     while (data.finish == false) {
         if (isatty(0))
             my_putstr("42sh> ");
-        if (getline(&string, &len, stdin) == -1) {
-            my_putstr("exit\n");
-            return (0);
-        }
+        if (getline(&string, &len, stdin) == -1)
+            break;
         string = clean_reduce_str(string);
         if (check_error(string) == 0) {
             array = parse_string(string);
@@ -40,5 +38,6 @@ int main_42sh(char **env)
         }
         string = NULL;
     }
+    my_putstr("exit\n");
     return (data.to_return);
 }

@@ -112,4 +112,12 @@ void init_struct(data_t *data);
 ///echo.c///
 int echo_func(char **argv);
 
+
+
+
+
+
+char **get_redir_double_left(char *final);
+
+
 #endif //PSU_42SH_2018_FUNCTION_H

@@ -27,6 +27,7 @@ SRC	=	my_putstr.c				\
 		print_error_exec.c		\
 		detect_exec.c			\
 		my_str_isnum.c			\
+		my_realloc_array.c		\
 
 OBJ	=	$(SRC:.c=.o)
 

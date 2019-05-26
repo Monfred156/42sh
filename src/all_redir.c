@@ -5,10 +5,33 @@
 ** all_redir.c
 */
 
+#include <stdio.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
 #include <stdlib.h>
 #include "function.h"
+
+char **get_redir_double_left(char *final)
+{
+    char **result = check_malloc_char_star(1);
+    size_t len = 0;
+    char *str = NULL;
+
+    result[0] = NULL;
+    for (int nb = 0; my_strcmp(final, str) != 0; nb++) {
+        my_putstr("? ");
+        if (getline(&str, &len, stdin) == -1)
+            break;
+        str = remove_n(str);
+        result = my_realloc_array(result, 1);
+        result[nb] = my_str_copy(str);
+    }
+    for (int nb = 0; result[nb] != NULL; nb++) {
+        printf("%s\n", result[nb]);
+    }
+    return (result);
+}
 
 char *get_file_after_redir(char *string)
 {
@@ -48,11 +71,15 @@ void redir_right(char **array, int *inout, int i)
         inout[1] = 1;
 }
 
+
+
 bool redir_left(char **array, int *inout, int i)
 {
     int fd = 0;
     int continu = 0;
     char *file = get_file_after_redir(array[i]);
+
+    if (array[i][1] == '<')
 
     fd = open(file, O_RDONLY);
     if (fd != -1)

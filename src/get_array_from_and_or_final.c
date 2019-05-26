@@ -35,6 +35,7 @@ void check_pipe(char **array, int *inout_put, int i)
 
 int get_array_from_and_or_final(data_t *data, char **array)
 {
+    bool pipe;
     bool exec = true;
     int value = 0;
     int inout_put[2] = {0, 1};
@@ -46,7 +47,7 @@ int get_array_from_and_or_final(data_t *data, char **array)
         if (i > 0)
             check_pipe(array, inout_put, i);
         if (i >= 0)
-            value = search_builtin_function(array[i], data, inout_put);
+            value = search_builtin_function(array[i], data, inout_put, pipe);
     }
     return (value);
 }

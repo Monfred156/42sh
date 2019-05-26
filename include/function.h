@@ -40,7 +40,7 @@ char *remove_n(char *string);
 int excve_function(char **argv, data_t *data);
 
 ///search_function.c///
-int search_builtin_function(char *str, data_t *data, int *inout_put);
+int search_builtin_function(char *str, data_t *data, int *inout_put, bool pipe);
 
 ///file_array_pars.c///
 int fill_array_after_separa(const char *string, char **array, int *rank, int i);

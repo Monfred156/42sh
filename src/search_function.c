@@ -28,11 +28,11 @@ int search_cd_and_exit_func(char **argv, data_t *data)
     return (search_env_function(argv, data));
 }
 
-int search_builtin_function(char *str, data_t *data, int *inout_put)
+int search_builtin_function(char *str, data_t *data, int *inout_put, bool pipe)
 {
     int cpy_in = dup(0);
     int cpy_out = dup(1);
-    int value = 0;
+    int value;
     char **argv = my_str_to_word_array(str, " ");
 
     dup2(inout_put[0], 0);
@@ -42,7 +42,9 @@ int search_builtin_function(char *str, data_t *data, int *inout_put)
         value = echo_func(argv);
     else
         value = search_cd_and_exit_func(argv, data);
-    dup2(cpy_in, 0);
-    dup2(cpy_out, 1);
+    if (pipe == false) {
+        dup2(cpy_in, 0);
+        dup2(cpy_out, 1);
+    }
     return (value);
 }

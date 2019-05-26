@@ -12,7 +12,8 @@
 #include <sys/wait.h>
 #include "function.h"
 
-bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put, int *fd)
+bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put,
+    int *fd)
 {
     bool exec = true;
 
@@ -46,7 +47,8 @@ bool check_pipe(char **array, int *inout_put, int i, int *pipefd)
 char **get_in_one_param(char **array, int nb)
 {
     char *str = NULL;
-    for (; array[nb + 1] && array[nb + 1][0] != '<' && array[nb + 1][0] != '>' && array[nb + 1][0] != '|'; nb++) {
+    for (; array[nb + 1] && array[nb + 1][0] != '<' && array[nb + 1][0] != '>'
+    && array[nb + 1][0] != '|'; nb++) {
         array[nb] = my_strcat(my_strdup(array[nb]), my_strdup(array[nb + 1]));
         for (int i = nb + 1; array[i]; i++)
             array[i] = array[i + 1];
@@ -71,8 +73,7 @@ int get_array_from_and_or_final(data_t *data, char **array)
         if (array[i][0] != '|')
             array = get_in_one_param(array, i);
         if (i >= 0)
-            value = search_builtin_function(array[i], data,
-                inout_put);
+            value = search_builtin_function(array[i], data, inout_put);
         if (pipe == true)
             i++;
         pipe = false;

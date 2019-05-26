@@ -15,7 +15,7 @@ int malloc_nbr_string(char const *string)
 
     for (int i = 0; string[i]; i++)
         if (string[i] == ' ')
-            counter+=2;
+            counter += 2;
     return (counter + 2);
 }
 

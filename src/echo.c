@@ -58,7 +58,7 @@ int echo_func(char **argv)
 {
     int nb = 1;
 
-    if (delete_quote(argv) == ERROR) 
+    if (delete_quote(argv) == ERROR)
         return (ERROR);
     if (my_strcmp(argv[1], "-n") == 0)
         nb++;

@@ -31,12 +31,13 @@ int main_42sh(char **env)
             my_putstr("42sh> ");
         if (getline(&string, &len, stdin) == -1)
             break;
-        data.history = add_one_line_end_of_array(data.history, my_strdup(string));
+        data.history = add_one_line_end_of_array(data.history,
+            my_strdup(string));
         string = clean_reduce_str(string);
-//        if (check_error(string) == 0) {
+        if (check_error(string) == 0) {
             array = parse_string(string);
             get_str(array, &data);
-//        }
+        }
         string = NULL;
     }
     my_putstr("exit\n");

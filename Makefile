@@ -43,13 +43,13 @@ SRCS	=		./src/main.c		            	\
 OBJS	=	$(SRCS:.c=.o)
 
 CFLAGS = -I ./include/
-CFLAGS += -W -Wall -Wextra -Wno-unused -g
+CFLAGS += -W -Wall -Wextra -Wno-unused
 
 all: $(NAME)
 
 $(NAME):	$(OBJS)
 			make -C ./lib/my
-			$(CC) $(OBJS) -o $(NAME) $(LDFLAGS) -L./lib/my -lmy -g
+			$(CC) $(OBJS) -o $(NAME) $(LDFLAGS) -L./lib/my -lmy
 			@echo -e "\033[32mCOMPILED WITH SUCCESS\033[42m"
 
 %.o: %.c

@@ -76,7 +76,7 @@ int search_file(char *str)
 {
     struct stat file_stat;
 
-    if (detect_exec(str) == 0)
+    if (detect_exec(str) == 0 && str[0] != '/')
         return (VALID);
     if (stat(str, &file_stat) == -1)
         return (VALID);

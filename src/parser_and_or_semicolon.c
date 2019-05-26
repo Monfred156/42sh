@@ -42,21 +42,19 @@ void move_to_next_operand(int result, char **tab, int *i)
     if (tab[(*i)] && strcmp(tab[(*i)], "&&") == 0) {
         if (result == VALID)
             return;
-        (*i)++;
-        while (strcmp(tab[(*i)], "||") == 1 || strcmp(tab[(*i)], ";") == 1)
-            (*i)++;
-        return;
-    } else if (tab[(*i)] && strcmp(tab[(*i)], "||") == 0) {
-        (*i)++;
-        if (result == VALID) {
-            while (tab[(*i)] && strcmp(tab[(*i)], ";") == 1)
+        else if (result == ERROR)
+            while (tab[(*i)] && strcmp(tab[(*i)], "||") != 0 &&
+                strcmp(tab[(*i)], ";") != 0)
                 (*i)++;
-            return;
-        }
-        while (tab[(*i)] && strcmp(tab[(*i)], "||") == 1 &&
-            strcmp(tab[(*i)], ";") == 1)
+    } else if (tab[(*i)] && strcmp(tab[(*i)], "||") == 0) {
+        if (result == VALID) {
             (*i)++;
-        return;
+            while (tab[(*i)] && strcmp(tab[(*i)], "&&") != 0 &&
+                strcmp(tab[(*i)], ";") != 0)
+                (*i)++;
+        }
+        else if (result == ERROR)
+            return;
     }
 }
 

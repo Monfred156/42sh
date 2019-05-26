@@ -6,6 +6,7 @@
 */
 
 #include <zconf.h>
+#include <stdio.h>
 #include "function.h"
 
 int search_env_function(char **argv, data_t *data)
@@ -25,6 +26,8 @@ int search_cd_and_exit_func(char **argv, data_t *data)
         return (check_exit(data, argv));
     if (my_strcmp(argv[0], "cd") == 0)
         return (check_cd(argv, data));
+    if (my_strcmp(argv[0], "history") == 0)
+        return (print_history(data->history));
     return (search_env_function(argv, data));
 }
 

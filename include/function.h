@@ -12,8 +12,8 @@
 #include "struct.h"
 
 ///history.c///
-char **get_history(char **history, char *str);
-void print_history(char **history);
+char **add_one_line_end_of_array(char **array, char *str);
+int print_history(char **history);
 
 ///str_clean.c///
 char *str_clean(char *str);
@@ -111,5 +111,8 @@ void init_struct(data_t *data);
 
 ///echo.c///
 int echo_func(char **argv);
+
+char **get_redir_double_left(char *final);
+
 
 #endif //PSU_42SH_2018_FUNCTION_H

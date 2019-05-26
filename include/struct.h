@@ -16,6 +16,7 @@
 typedef struct s_data {
     char **cpy_env;
     char **old_pwd;
+    char **history;
     int to_return;
     bool finish;
 } data_t;

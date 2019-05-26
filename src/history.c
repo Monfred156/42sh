@@ -21,7 +21,7 @@ char **add_one_line_end_of_array(char **array, char *str)
     return (array_dup);
 }
 
-void print_history(char **history)
+int print_history(char **history)
 {
     int counter = 0;
     int counter_max = 0;
@@ -40,6 +40,6 @@ void print_history(char **history)
         my_put_nbr(i);
         my_putstr("  ");
         my_putstr(history[i]);
-        my_putchar('\n');
     }
+    return (VALID);
 }

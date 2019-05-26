@@ -17,11 +17,8 @@ bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put, int *f
     bool exec = true;
 
     for (int i = *nb; array[i] && array[i][0] != '|'; i++) {
-        if (array[i][0] == '<' || array[i][0] == '>') {
+        if (array[i][0] == '<' || array[i][0] == '>')
             exec = check_redir_and_path(array, inout_put, i, fd);
-            if (i == *nb)
-                *nb -= 1;
-        }
     }
     return (exec);
 }
@@ -46,6 +43,17 @@ bool check_pipe(char **array, int *inout_put, int i, int *pipefd)
     return false;
 }
 
+char **get_in_one_param(char **array, int nb)
+{
+    char *str = NULL;
+    for (; array[nb + 1] && array[nb + 1][0] != '<' && array[nb + 1][0] != '>' && array[nb + 1][0] != '|'; nb++) {
+        array[nb] = my_strcat(my_strdup(array[nb]), my_strdup(array[nb + 1]));
+        for (int i = nb + 1; array[i]; i++)
+            array[i] = array[i + 1];
+    }
+    return (array);
+}
+
 int get_array_from_and_or_final(data_t *data, char **array)
 {
     bool exec = true;
@@ -60,6 +68,8 @@ int get_array_from_and_or_final(data_t *data, char **array)
         if (exec == false)
             break;
         pipe = check_pipe(array, inout_put, i, pipefd);
+        if (array[i][0] != '|')
+            array = get_in_one_param(array, i);
         if (i >= 0)
             value = search_builtin_function(array[i], data, inout_put);
         if (pipe == true)

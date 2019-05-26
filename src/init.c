@@ -23,4 +23,6 @@ void init_struct(data_t *data)
     data->finish = false;
     data->to_return = 0;
     data->old_pwd = initialisation_old_pwd();
+    data->history = check_malloc_char_star(1);
+    data->history[0] = NULL;
 }

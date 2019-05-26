@@ -71,7 +71,8 @@ int get_array_from_and_or_final(data_t *data, char **array)
         if (array[i][0] != '|')
             array = get_in_one_param(array, i);
         if (i >= 0)
-            value = search_builtin_function(array[i], data, inout_put);
+            value = search_builtin_function(array[i], data,
+                inout_put);
         if (pipe == true)
             i++;
         pipe = false;

@@ -34,7 +34,7 @@ char **get_redir_double_left(char *final)
     free(str);
     if (nb > 0)
         free(result[nb - 1]);
-    result[nb] = NULL;
+    result[nb - 1] = NULL;
     return (result);
 }
 

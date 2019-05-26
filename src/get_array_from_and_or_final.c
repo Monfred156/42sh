@@ -19,7 +19,8 @@ bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put, int *f
     for (int i = *nb; array[i] && array[i][0] != '|'; i++) {
         if (array[i][0] == '<' || array[i][0] == '>') {
             exec = check_redir_and_path(array, inout_put, i, fd);
-            *nb -= 1;
+            if (i == *nb)
+                *nb -= 1;
         }
     }
     return (exec);
@@ -60,7 +61,6 @@ int get_array_from_and_or_final(data_t *data, char **array)
         check_pipe(array, inout_put, i, &pipe, pipefd);
         if (i >= 0)
             value = search_builtin_function(array[i], data, inout_put);
-//        close(fd[0]);
         if (pipe == true)
             i++;
         pipe = false;

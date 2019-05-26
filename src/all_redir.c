@@ -18,18 +18,22 @@ char **get_redir_double_left(char *final)
     char **result = check_malloc_char_star(1);
     size_t len = 0;
     char *str = NULL;
+    int nb;
 
     result[0] = NULL;
-    for (int nb = 0; my_strcmp(final, str) != 0; nb++) {
+    for (nb = 0; my_strcmp(final, str) != 0; nb++) {
         my_putstr("? ");
         free(str);
         str = NULL;
         if (getline(&str, &len, stdin) == -1)
             break;
-        str = remove_n(str);
         result = my_realloc_array(result, 1);
         result[nb] = my_str_copy(str);
+        str = remove_n(str);
     }
+    free(str);
+    free(result[nb]);
+    result[nb] = NULL;
     return (result);
 }
 

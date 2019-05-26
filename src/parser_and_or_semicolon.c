@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** 42sh
-** File description:
 ** parser_and_or_semicolumn
+** File description:
+** parser_and_or_semicolumn.c
 */
 
 #include <string.h>
@@ -24,7 +24,7 @@ int count_str_left(char **tab, int act_cpt)
 char **get_next_tab(int *i, char **cmd_parsed)
 {
     int cpt = 0;
-    char **tab = malloc(sizeof(char *) * (count_str_left(cmd_parsed, *i) + 1));
+    char **tab = check_malloc_char_star(count_str_left(cmd_parsed, *i) + 1);
 
     while (cmd_parsed[(*i)] && strcmp(cmd_parsed[(*i)], "&&") != 0 &&
         strcmp(cmd_parsed[(*i)], "||") != 0 &&

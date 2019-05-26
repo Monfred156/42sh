@@ -11,7 +11,7 @@
 
 char *recup_var(char *var_env)
 {
-    char *string = malloc(sizeof(char) * (strlen(var_env) + 1));
+    char *string = check_malloc_char(strlen(var_env) + 1);
     int i = 0;
     int n = 0;
 
@@ -26,7 +26,7 @@ char *recup_var(char *var_env)
 
 char *recup_start_string(char *string)
 {
-    char *result = malloc(sizeof(char) * (strlen(string) + 1));
+    char *result = check_malloc_char(strlen(string) + 1);
     int i = 0;
 
     for (; string[i] != '$'; i++)

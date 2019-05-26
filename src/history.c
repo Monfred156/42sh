@@ -11,7 +11,7 @@
 char **add_one_line_end_of_array(char **array, char *str)
 {
     int i = 0;
-    char **array_dup = malloc(sizeof(char *) * (array_len(array) + 2));
+    char **array_dup = check_malloc_char_star(array_len(array) + 2);
 
     for (; array[i]; i++)
         array_dup[i] = array[i];

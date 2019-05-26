@@ -9,9 +9,8 @@
 
 char *remove_n(char *string)
 {
-    for (int i = 0; string[i]; i++) {
+    for (int i = 0; string[i]; i++)
         if (string[i] == '\n')
             string[i] = '\0';
-    }
-    return string;
+    return (string);
 }

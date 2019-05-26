@@ -39,7 +39,7 @@ char *get_rank_var(char *string, char *var_name, data_t *data)
 
 char *get_var_name(char *string, data_t *data)
 {
-    char *var_name = malloc(sizeof(char) * (strlen(string) + 1));
+    char *var_name = check_malloc_char(strlen(string) + 1);
     int n = 0;
     int i = 0;
 

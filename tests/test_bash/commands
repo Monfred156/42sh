@@ -1,1 +1,0 @@
-< Makefile grep clean | > [fichier] cat;;;;;;;;< Makefile wc > [fichier] -l; cat  <<END|wc -l| env | wc -l >>[fichier]; ls -lRa | wc

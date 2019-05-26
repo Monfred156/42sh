@@ -33,7 +33,7 @@ char *recup_home(char **cpy_env)
     return (NULL);
 }
 
-void error_global_cd(struct stat filestat, char **array)
+int error_global_cd(struct stat filestat, char **array, int *count)
 {
     if ((S_IFMT & filestat.st_mode) != S_IFDIR) {
         my_putstr_error(array[1]);
@@ -42,6 +42,8 @@ void error_global_cd(struct stat filestat, char **array)
         my_putstr_error(array[1]);
         my_putstr_error(": Permission denied.\n");
     }
+    *count -= 1;
+    return (ERROR);
 }
 
 void only_cd(data_t *data, int count)
@@ -72,9 +74,7 @@ int global_cd(char **array, data_t *data, int *count)
         else
             data->old_pwd[1] = recup_old_pwd(data->cpy_env);
     } else if (stat(array[1], &filestat) != -1) {
-        error_global_cd(filestat, array);
-        *count -= 1;
-        return (ERROR);
+        return error_global_cd(filestat, array, count);
     } else {
         my_putstr_error(array[1]);
         my_putstr_error(": No such file or directory.\n");

@@ -56,6 +56,7 @@ int string_is_separator(char *string);
 int string_is_redir(char *string);
 int ambigous_redirect(char **array, int i);
 int check_invalid_command(char **array);
+void display_execve_error(char *cmd);
 
 ///error_check_arg.c///
 int string_is_separator(char *string);

@@ -100,7 +100,8 @@ int excve_function(char **argv, data_t *data)
         if (pid < 0)
             exit(84);
         if (pid == 0) {
-            execve(copy, argv, data->cpy_env);
+            if (execve(copy, argv, data->cpy_env) == -1)
+                display_execve_error(argv[0]);
             exit(0);
         } else
             status = crash_file(status, pid);

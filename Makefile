@@ -11,34 +11,34 @@ CC	= gcc
 
 RM	= rm -f
 
-SRCS	=		./src/main.c		            	\
-                ./src/history.c			            \
-    			./src/main_42sh.c			        \
-    			./src/parse_string.c	            \
-    			./src/str_clean.c		            \
-    			./src/remove_n.c		            \
-    			./src/env.c				            \
-				./src/shell_excve.c		            \
-				./src/fill_array_pars.c             \
-				./src/exit.c                        \
-				./src/error_handling.c              \
-				./src/search_function.c         	\
-				./src/replace_environnement_var.c   \
-				./src/all_redir.c                   \
-				./src/free.c                        \
-				./src/parser_and_or_semicolon.c     \
-				./src/get_array_from_and_or_final.c \
-				./src/pipe.c                        \
-				./src/create_argv.c					\
-				./src/setenv.c                      \
-				./src/get_env.c                     \
-				./src/unsetenv.c                    \
-				./src/cd.c                          \
-				./src/cd_minus.c                    \
-				./src/error_check_arg.c				\
-				./src/recup_str.c					\
-				./src/init.c						\
-				./src/echo.c						\
+SRCS	=	./src/main.c				\
+		./src/history.c				\
+		./src/main_42sh.c			\
+		./src/parse_string.c			\
+		./src/str_clean.c			\
+		./src/remove_n.c			\
+		./src/env.c				\
+		./src/shell_excve.c			\
+		./src/fill_array_pars.c			\
+		./src/exit.c				\
+		./src/error_handling.c			\
+		./src/search_function.c			\
+		./src/replace_environnement_var.c	\
+		./src/all_redir.c			\
+		./src/free.c				\
+		./src/parser_and_or_semicolon.c		\
+		./src/get_array_from_and_or_final.c	\
+		./src/pipe.c				\
+		./src/create_argv.c			\
+		./src/setenv.c				\
+		./src/get_env.c				\
+		./src/unsetenv.c			\
+		./src/cd.c				\
+		./src/cd_minus.c			\
+		./src/error_check_arg.c			\
+		./src/recup_str.c			\
+		./src/init.c				\
+		./src/echo.c				\
 
 OBJS	=	$(SRCS:.c=.o)
 

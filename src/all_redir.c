@@ -38,7 +38,7 @@ char **get_redir_double_left(char *final)
 char *get_file_after_redir(char *string)
 {
     int i = 0;
-    char *str = malloc(sizeof(char) * strlen(string));
+    char *str = check_malloc_char(strlen(string));
     int place = 0;
 
     for (; string[place] != '>' && string[place] != '<' &&
@@ -97,8 +97,7 @@ bool redir_left(char **array, int *inout, int i)
     array[i] = NULL;
     if (continu == 1)
         return (false);
-    else
-        return (true);
+    return (true);
 }
 
 bool check_redir_and_path(char **array, int *inout, int i)

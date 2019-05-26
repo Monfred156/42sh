@@ -28,7 +28,7 @@ char *recup_old_pwd(char **cpy_env)
     for (int i = 0; cpy_env[i] != NULL; i++) {
         if (cpy_env[i][0] == 'P' && cpy_env[i][1] == 'W' &&
             cpy_env[i][2] == 'D') {
-            old_pwd = malloc(sizeof(char) * my_strlen(cpy_env[i]));
+            old_pwd = check_malloc_char(my_strlen(cpy_env[i]));
             for (; cpy_env[i][counter] != '='; counter++);
             counter++;
             for (; cpy_env[i][counter]; counter++) {
@@ -88,10 +88,9 @@ int algo_cd_first(data_t *data, int *count)
         if (*count % 2 == 0) {
             if (algo_cd_firsta(data, count) == ERROR)
                 return (ERROR);
-        } else {
+        } else
             if (algo_cd_firstb(data, count) == ERROR)
                 return (ERROR);
-        }
     }
     return (VALID);
 }

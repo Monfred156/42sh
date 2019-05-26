@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** space_in_str
+** parse_string
 ** File description:
-** space_in_str.c
+** parse_string.c
 */
 
 #include <string.h>
@@ -40,12 +40,12 @@ int malloc_same_array(char **array)
 
 char **clean_array(char **array)
 {
-    char **result = malloc(sizeof(char *) * malloc_same_array(array));
+    char **result = check_malloc_char_star(malloc_same_array(array));
     int n = 0;
     int m = 0;
 
     for (int i = 0; array[i]; i++) {
-        result[n] = malloc(sizeof(char) * (strlen(array[i]) + 1));
+        result[n] = check_malloc_char(strlen(array[i]) + 1);
         for (int j = 0; array[i][j]; j++) {
             if (array[i][0] != '\0') {
                 result[n][m] = array[i][j];
@@ -64,18 +64,18 @@ char **clean_array(char **array)
 
 char **parse_string(char *string)
 {
-    char **array = malloc(sizeof(char *) * (malloc_nbr_string(string) + 1));
-    int *rank = malloc(sizeof(int) * 2);
+    char **array = check_malloc_char_star(malloc_nbr_string(string) + 1);
+    int *rank = check_malloc_int(2);
 
     rank[0] = 0;
     rank[1] = 0;
-    array[rank[1]] = malloc(sizeof(char) * (strlen(string) + 1));
+    array[rank[1]] = check_malloc_char(strlen(string) + 1);
     for (int i = 0; string[i]; i++) {
-        if (string[i] == '>' || string[i] == '<') {
+        if (string[i] == '>' || string[i] == '<')
             i = fill_array_after_redir(string, array, rank, i);
-        } else if (check_separator(string[i]) == 1) {
+        else if (check_separator(string[i]) == 1)
             i = fill_array_after_separa(string, array, rank, i);
-        } else {
+        else {
             array[rank[1]][rank[0]] = string[i];
             rank[0]++;
         }

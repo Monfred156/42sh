@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** 42sh
-** File description:
 ** exit
+** File description:
+** exit.c
 */
 
 #include <unistd.h>

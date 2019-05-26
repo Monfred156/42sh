@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** space_in_str
+** main_42sh
 ** File description:
-** space_in_str.c
+** main_42sh.c
 */
 
 #include <stdio.h>

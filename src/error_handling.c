@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** space_in_str
+** error_handling
 ** File description:
-** space_in_str.c
+** error_handling.c
 */
 
 #include <string.h>

@@ -1,18 +1,18 @@
 /*
 ** EPITECH PROJECT, 2023
-** PSU_42sh_2018
+** init
 ** File description:
-** Created by Anthony Anicotte,
+** init.c
 */
 
 #include <stdlib.h>
-#include "struct.h"
+#include "function.h"
 
 char **initialisation_old_pwd(void)
 {
     char **old_pwd;
 
-    old_pwd = malloc(sizeof(char *) * 2);
+    old_pwd = check_malloc_char_star(2);
     old_pwd[0] = NULL;
     old_pwd[1] = NULL;
     return (old_pwd);

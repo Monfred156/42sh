@@ -19,7 +19,7 @@ char *recup_home(char **cpy_env)
     for (int i = 0; cpy_env[i] != NULL; i++) {
         if (cpy_env[i][0] == 'H' && cpy_env[i][1] == 'O' &&
             cpy_env[i][2] == 'M' && cpy_env[i][3] == 'E') {
-            home = malloc(sizeof(char) * my_strlen(cpy_env[i]));
+            home = check_malloc_char(my_strlen(cpy_env[i]));
             for (; cpy_env[i][counter] != '='; counter++);
             counter++;
             for (; cpy_env[i][counter]; counter++) {

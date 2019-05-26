@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** setenv
 ** File description:
-** .c
+** setenv.c
 */
 
 #include <stdlib.h>
@@ -14,14 +14,13 @@ int error_setenv(char **array)
         my_putstr_error("setenv: Variable name must begin with a letter.\n");
         return (1);
     }
-    for (int i = 0; array[1][i]; i++) {
+    for (int i = 0; array[1][i]; i++)
         if (array[1][i] < 48 || (array[1][i] > 57 && array[1][i] < 65) ||
             (array[1][i] > 90 && array[1][i] < 97) || array[1][i] > 122) {
             my_putstr_error("setenv: Variable name must contain ");
             my_putstr_error("alphanumeric characters.\n");
             return (1);
         }
-    }
     return (0);
 }
 
@@ -34,7 +33,7 @@ int check_arg(char **array, data_t *data, int count)
         counter = 0;
         for (; data->cpy_env[i][counter] != '='; counter++);
         free(dup);
-        dup = malloc(sizeof(char) * counter + 1);
+        dup = check_malloc_char(counter + 1);
         for (counter = 0; data->cpy_env[i][counter] != '='; counter++)
             dup[counter] = data->cpy_env[i][counter];
         dup[counter] = '\0';

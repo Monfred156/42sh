@@ -38,16 +38,17 @@ bool check_pipe(char **array, int *inout_put, int i, int *pipefd)
     if (((i > 0 && array[i - 1][0] != '|') || i == 0) && array[i+1] != NULL &&
     array[i + 1][0] == '|') {
         first_pipe(inout_put, pipefd);
-        return true;
+        return (true);
     }
-    return false;
+    return (false);
 }
 
 char **get_in_one_param(char **array, int nb)
 {
     char *str = NULL;
-    for (; array[nb + 1] && array[nb + 1][0] != '<' && array[nb + 1][0] != '>'
-    && array[nb + 1][0] != '|'; nb++) {
+
+    for (; array[nb + 1] && array[nb + 1][0] != '<' &&
+    array[nb + 1][0] != '>' && array[nb + 1][0] != '|'; nb++) {
         array[nb] = my_strcat(my_strdup(array[nb]), my_strdup(array[nb + 1]));
         for (int i = nb + 1; array[i]; i++)
             array[i] = array[i + 1];

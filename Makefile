@@ -39,6 +39,7 @@ SRCS	=	./src/main.c				\
 		./src/recup_str.c			\
 		./src/init.c				\
 		./src/echo.c				\
+		./src/redir_left.c			\
 
 OBJS	=	$(SRCS:.c=.o)
 

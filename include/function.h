@@ -68,6 +68,7 @@ void free_char_double_star(char **array);
 
 ///all_redir.c///
 bool check_redir_and_path(char **array, int *inout, int i);
+char *get_file_after_redir(char *string);
 
 ///parser_and_or_semicolon.c///
 void get_str(char **cmd_parsed, data_t *data);
@@ -112,7 +113,7 @@ void init_struct(data_t *data);
 ///echo.c///
 int echo_func(char **argv);
 
-char **get_redir_double_left(char *final);
-
+///redir_left.c///
+bool redir_left(char **array, int *inout, int i);
 
 #endif //PSU_42SH_2018_FUNCTION_H

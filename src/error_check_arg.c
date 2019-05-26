@@ -36,8 +36,6 @@ int string_is_separator(char *string)
 {
     if (string_is_sep_no_redir(string) == 0)
         return (0);
-    if (strcmp(string, ">") == 0 || strcmp(string, ">>") == 0)
-        return (0);
     if (strcmp(string, "&&") == 0)
         return (0);
     return (1);

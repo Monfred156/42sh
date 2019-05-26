@@ -13,10 +13,10 @@
 int ambigous_redirect(char **array, int i)
 {
     if ((strcmp(array[i], "|") == 0 || strcmp(array[i], "<") == 0 ||
-    strcmp(array[i], "<<") == 0) && array[i + 1] != NULL && ((strcmp(array[i
-    + 1], "<") == 0 || strcmp(array[i + 1], "<<") == 0) ||
-        (array[i+2] != NULL && (strcmp(array[i + 2], "<") == 0 || strcmp
-        (array[i + 2], "<<") == 0)))) {
+    strcmp(array[i], "<<") == 0) && array[i + 1] != NULL &&
+    ((strcmp(array[i + 1], "<") == 0 || strcmp(array[i + 1], "<<") == 0) ||
+    (array[i+2] != NULL && (strcmp(array[i + 2], "<") == 0 ||
+    strcmp(array[i + 2], "<<") == 0)))) {
         my_putstr("Ambiguous input redirect.\n");
         return (1);
     }
@@ -53,6 +53,7 @@ int check_invalid_command(char **array)
 int check_error(char *string)
 {
     char **array = create_argv(string);
+
     if (check_invalid_command(array) == 1)
         return (1);
     return (0);

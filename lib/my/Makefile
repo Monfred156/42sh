@@ -28,6 +28,8 @@ SRC	=	my_putstr.c				\
 		detect_exec.c			\
 		my_str_isnum.c			\
 		my_realloc_array.c		\
+		my_count_array.c		\
+		my_strsub_char.c		\
 
 OBJ	=	$(SRC:.c=.o)
 

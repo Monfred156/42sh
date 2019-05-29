@@ -17,8 +17,11 @@ bool check_redir_until_end_or_pipe(char **array, int *nb, int *inout_put)
     bool exec = true;
 
     for (int i = *nb; array[i] && array[i][0] != '|'; i++) {
-        if (array[i][0] == '<' || array[i][0] == '>')
+        if (array[i][0] == '<' || array[i][0] == '>') {
             exec = check_redir_and_path(array, inout_put, i);
+            if (i == *nb)
+                *nb -= 1;
+        }
     }
     return (exec);
 }

@@ -1,0 +1,95 @@
+#!/bin/bash
+
+touch file_tcsh
+touch file_42sh
+touch file_diff
+touch file_test
+touch comp
+touch comp1
+touch comp2
+
+make
+
+exec_tcsh () {
+    echo "$@" > file_test
+    tcsh < file_test > file_tcsh
+}
+
+exec_42sh () {
+    echo "$@" > file_test
+    tcsh < file_test > file_42sh
+}
+
+diff_both_file () {
+    rm file_tcsh
+    rm file_42sh
+    rm file_diff
+    rm file_test
+    rm comp
+    rm comp1
+    rm comp2
+    touch file_tcsh
+    touch file_42sh
+    touch file_diff
+    touch file_test
+    touch comp
+    touch comp1
+    touch comp2
+    exec_tcsh $@
+    if [ -f comp ]
+    then
+        cat comp > comp1
+    fi
+    exec_42sh $@
+    if [ -f comp ]
+    then
+        cat comp > comp2
+        diff comp1 comp2 > comp
+    fi
+    diff file_42sh file_tcsh > file_diff
+    cat file_diff
+    if [ ! -s file_diff ]
+    then
+        if [ -f comp ]
+        then
+            if [ ! -s comp ]
+            then
+                echo -e "\033[32m$@ ok\033[0m"
+            else
+                echo -e "\033[31m$@ ko\033[0m"
+            fi
+        else
+            echo -e "\033[32m$@ ok\033[0m"
+        fi
+    else
+        echo -e "\033[31m$@ ko\033[0m"
+
+    fi
+}
+
+diff_both_file "env"
+diff_both_file "setenv oui non ; env"
+diff_both_file "setenv oui non=non ; unsetenv oui;env"
+diff_both_file "echo test"
+diff_both_file "echo 'je test'"
+diff_both_file "cd .. ; ls ; cd -; ls"
+diff_both_file "ls"
+diff_both_file "ls > comp"
+diff_both_file "cat < comp"
+diff_both_file "ls | cat -e"
+diff_both_file "ls | cat -e | cat -e"
+diff_both_file "ls && ls"
+diff_both_file "ls || ls"
+diff_both_file "ls || ls && ls"
+diff_both_file "ls && ls || ls"
+diff_both_file "ls > comp; ls >> comp ;cat < comp"
+diff_both_file "< Makefile wc > comp -l"
+diff_both_file "cd ; </etc/hosts od -c | grep xx | wc >> /tmp/z -l ; cd - && echo OK"
+
+rm file_tcsh
+rm file_42sh
+rm file_diff
+rm file_test
+rm comp
+rm comp1
+rm comp2
